@@ -18,6 +18,37 @@ const lerp = (a, b, u) => a + (b - a) * u;
 const smooth = (u) => u * u * (3 - 2 * u);
 const inOut = (u) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2);
 
+// ---- graphics budget: the landing must stay cool on a fan-less laptop and usable on an
+// office one. Quality tiers, cheapest first: a tier caps the pixel ratio and the canvas's
+// pixel count and switches the costly passes. A scene starts at tier 2 (1 on phones and
+// weak GPUs) and steps down while its frames run late; below tier 0 it freezes into a
+// still frame that still turns on drag. Tier 3 is the original look, reached by ?gfx=3 only.
+const TIERS = [
+  { dpr: 1, px: 0.6e6, msaa: 0, bloom: false, shadow: 0 },
+  { dpr: 1.25, px: 1.0e6, msaa: 0, bloom: true, shadow: 1024 },
+  { dpr: 1.5, px: 1.6e6, msaa: 2, bloom: true, shadow: 1024 },
+  { dpr: 2, px: 4.5e6, msaa: 4, bloom: true, shadow: 2048 },
+];
+const FPS = 30; // the scene moves slowly: 30 frames look the same as 120 at a quarter of the work
+const WARMUP = 1000, WINDOW = 2000; // ms: ignored after a start or a step down (shader compiles), then measured
+// ?gfx=0..3 fixes a tier (no adapting), ?gfx=still a still frame: for checking how weak devices see it
+const GFX_PARAM = new URLSearchParams(location.search).get("gfx");
+const FORCED = /^[0-3]$/.test(GFX_PARAM ?? "") ? +GFX_PARAM : GFX_PARAM === "still" ? 0 : undefined;
+// shared by the hero and the Mine Map: what one learns about the device, the other starts from
+const GFX = { tier: 2, frozen: GFX_PARAM === "still" };
+
+/** The GPU's name: Chrome masks gl.RENDERER, Firefox deprecates the debug extension. */
+function gpuName(gl) {
+  try {
+    const name = gl.getParameter(gl.RENDERER) || "";
+    if (!/^webkit/i.test(name)) return name;
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
+    return (ext && gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) || name;
+  } catch {
+    return "";
+  }
+}
+
 // Neutral tone mapping crushes very dark values (y = 6.25 x^2 below 0.08); feed the inverse
 // so the backdrop lands exactly on the page's navy and the canvas edge disappears.
 const invNeutral = (hex) => {
@@ -87,16 +118,25 @@ export function mountMine(canvas, opts = {}) {
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: "high-performance" });
+    // without a real GPU (software rendering) the page keeps its poster instead
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: false, failIfMajorPerformanceCaveat: FORCED === undefined });
   } catch (err) {
     console.warn("[mine] WebGL unavailable:", err);
     return null;
   }
-  let dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
-  renderer.setPixelRatio(dpr);
+  const gpu = gpuName(renderer.getContext());
+  if (FORCED === undefined && /swiftshader|llvmpipe|softpipe|software|basic render/i.test(gpu)) {
+    renderer.dispose();
+    return null;
+  }
+  const weak = small || /intel|mali|adreno|powervr|videocore/i.test(gpu) || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  let tier = FORCED ?? Math.min(GFX.tier, weak ? 1 : 2);
+  let frozen = GFX.frozen;
+  const isStill = () => opts.still || frozen;
+  let dpr = 1;
   renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap; // with shadow.radius it softens edges for less than PCFSoft
 
   const scene = new THREE.Scene();
   const BG = opts.background ?? "#0a1020";
@@ -113,10 +153,8 @@ export function mountMine(canvas, opts = {}) {
   const EXT = 13;
   const sun = new THREE.DirectionalLight("#ffe6c4", 3.6);
   sun.position.set(-7, 6.5, 1.5).normalize().multiplyScalar(EXT * 2);
-  sun.castShadow = true;
-  sun.shadow.mapSize.setScalar(small ? 1024 : 2048);
   Object.assign(sun.shadow.camera, { left: -EXT, right: EXT, top: EXT, bottom: -EXT, near: 0.1, far: EXT * 5 });
-  sun.shadow.radius = small ? 3 : 5;
+  sun.shadow.radius = 3;
   sun.shadow.bias = -0.0004;
   sun.shadow.normalBias = 0.02;
   scene.add(sun, sun.target);
@@ -364,7 +402,7 @@ export function mountMine(canvas, opts = {}) {
   }
 
   // ---- post: MSAA render -> bloom -> tone map/sRGB (grain and vignette live in CSS)
-  const rt = new THREE.WebGLRenderTarget(4, 4, { type: THREE.HalfFloatType, samples: small ? 2 : 4 });
+  const rt = new THREE.WebGLRenderTarget(4, 4, { type: THREE.HalfFloatType, samples: TIERS[tier].msaa });
   const composer = new EffectComposer(renderer, rt);
   composer.addPass(new RenderPass(scene, camera));
   const bloom = new UnrealBloomPass(new THREE.Vector2(4, 4), 0.65, 0.55, 1.05);
@@ -380,6 +418,8 @@ export function mountMine(canvas, opts = {}) {
     if (!w || !h || (w === W && h === H)) return;
     W = w;
     H = h;
+    const q = TIERS[tier];
+    dpr = Math.min(devicePixelRatio || 1, q.dpr, Math.max(0.75, Math.sqrt(q.px / (W * H))));
     renderer.setPixelRatio(dpr);
     renderer.setSize(W, H, false);
     composer.setPixelRatio(dpr);
@@ -392,10 +432,29 @@ export function mountMine(canvas, opts = {}) {
     const lift = Math.round(H * (framing === "hero" ? (small ? 0 : 0.07) : 0.05));
     if (shift || lift) camera.setViewOffset(W, H, -shift, lift, W, H);
     else camera.clearViewOffset();
-    if (opts.still && drawn) draw(clock); // a resize clears the canvas and no loop redraws it
+    if (isStill() && drawn) draw(clock); // a resize clears the canvas and no loop redraws it
   }
+
+  function applyTier(i) {
+    tier = i;
+    canvas.dataset.gfx = i; // the current tier, readable from devtools
+    const q = TIERS[i];
+    bloom.enabled = q.bloom;
+    for (const t of [composer.renderTarget1, composer.renderTarget2]) {
+      if (t.samples !== q.msaa) ((t.samples = q.msaa), t.dispose());
+    }
+    sun.castShadow = q.shadow > 0;
+    if (q.shadow && sun.shadow.mapSize.x !== q.shadow) {
+      sun.shadow.mapSize.setScalar(q.shadow);
+      sun.shadow.map?.dispose();
+      sun.shadow.map = null;
+    }
+    W = 0; // force resize() to apply the new pixel ratio
+    resize();
+  }
+  applyTier(tier);
+  if (frozen) canvas.dataset.gfx = "still";
   new ResizeObserver(resize).observe(canvas);
-  resize();
 
   // ---- interaction: drag rotates (horizontal only, so a phone still scrolls), then eases back
   let dragAz = 0, dragEl = 0, dragging = false, lastX = 0, lastY = 0, releasedAt = -1e9;
@@ -411,8 +470,7 @@ export function mountMine(canvas, opts = {}) {
     dragEl = Math.max(-14, Math.min(20, dragEl + (e.clientY - lastY) * 0.15));
     lastX = e.clientX;
     lastY = e.clientY;
-    if (!opts.still) return;
-    draw(clock);
+    if (isStill()) draw(clock);
   });
   const release = () => ((dragging = false), (releasedAt = performance.now() / 1000));
   canvas.addEventListener("pointerup", release);
@@ -466,7 +524,7 @@ export function mountMine(canvas, opts = {}) {
 
     // module highlight levels ease toward the selection
     const k = 1 - Math.exp(-dt * 7);
-    for (const id of Object.keys(SUBJECT)) level[id] = lerp(level[id] ?? 0, id === module ? 1 : 0, opts.still ? 1 : k);
+    for (const id of Object.keys(SUBJECT)) level[id] = lerp(level[id] ?? 0, id === module ? 1 : 0, isStill() ? 1 : k);
     const pulse = 0.75 + 0.25 * Math.sin(t * 3.2);
     const L = level;
     for (const m of glow.transport) setGlow(m, L.transport * pulse);
@@ -523,8 +581,8 @@ export function mountMine(canvas, opts = {}) {
       camGoal.lerp(p, 0.55);
       zGoal = z;
     }
-    camT.lerp(camGoal, opts.still ? 1 : 1 - Math.exp(-dt * 2.2));
-    zoom = lerp(zoom, zGoal, opts.still ? 1 : 1 - Math.exp(-dt * 2.2));
+    camT.lerp(camGoal, isStill() ? 1 : 1 - Math.exp(-dt * 2.2));
+    zoom = lerp(zoom, zGoal, isStill() ? 1 : 1 - Math.exp(-dt * 2.2));
     const half = FIT * zoom;
     const vHalf = camera.aspect >= 1 ? half : half / camera.aspect;
     camera.fov = (2 * Math.atan(vHalf / DIST)) / DEG;
@@ -533,7 +591,7 @@ export function mountMine(canvas, opts = {}) {
     camera.updateProjectionMatrix();
     camera.updateMatrixWorld();
 
-    composer.render();
+    composer.render(); // OutputPass tone maps everything, the custom shaders included
 
     for (const l of LABELS) {
       if (!l.el) continue;
@@ -543,21 +601,46 @@ export function mountMine(canvas, opts = {}) {
     }
   }
 
-  // ---- loop: runs only while on screen and the tab is visible; drops resolution if slow
-  let onScreen = false, raf = 0, slowFrames = 0;
+  // ---- loop: runs only while on screen and the tab is visible, at most FPS frames a second.
+  // The time between drawn frames is the honest load signal: GPU work is asynchronous, so
+  // timing draw() itself shows only the CPU side, while an overloaded GPU delays the frames.
+  let onScreen = false, raf = 0, lastDraw = 0, winStart = 0, winDraws = 0;
+  const restartWindow = () => ((winStart = performance.now() + WARMUP), (winDraws = 0));
   const t0 = performance.now() / 1000;
   function frame() {
     raf = 0;
-    if (!onScreen || document.hidden) return;
+    if (!onScreen || document.hidden || frozen) return;
+    raf = requestAnimationFrame(frame);
     const a = performance.now();
+    const gap = a - lastDraw;
+    if (gap < 1000 / FPS - 4) return; // skip display frames beyond FPS (60/120 Hz screens)
+    lastDraw = a;
     clock = a / 1000 - t0;
     draw(clock);
-    if (performance.now() - a > 24 && dpr > 1) {
-      if (++slowFrames > 40) ((dpr = Math.max(1, dpr - 0.25)), (slowFrames = 0), (W = 0), resize());
-    } else slowFrames = Math.max(0, slowFrames - 1);
-    raf = requestAnimationFrame(frame);
+    if (FORCED !== undefined || a < winStart) return;
+    if (gap > 1000) return restartWindow(); // a stall (page jank) says nothing about the GPU
+    winDraws++;
+    const span = a - winStart;
+    if (span < WINDOW) return;
+    const fps = (winDraws * 1000) / span;
+    if (fps < 22) stepDown(fps < 12 ? 2 : 1);
+    else ((winStart = a), (winDraws = 0));
   }
-  const kick = () => !opts.still && !raf && onScreen && !document.hidden && (last = performance.now() / 1000, (raf = requestAnimationFrame(frame)));
+  function stepDown(steps) {
+    restartWindow();
+    if (tier > 0) applyTier(Math.max(0, tier - steps));
+    else ((frozen = true), (canvas.dataset.gfx = "still"));
+    GFX.tier = Math.min(GFX.tier, tier);
+    GFX.frozen ||= frozen;
+  }
+  const kick = () => {
+    if (GFX.tier < tier && FORCED === undefined) applyTier(GFX.tier); // the other scene already learned this device is slower
+    if (GFX.frozen && !frozen) ((frozen = true), (canvas.dataset.gfx = "still"), draw(clock));
+    if (opts.still || frozen || raf || !onScreen || document.hidden) return;
+    restartWindow();
+    last = performance.now() / 1000;
+    raf = requestAnimationFrame(frame);
+  };
   new IntersectionObserver(([e]) => ((onScreen = e.isIntersecting), kick()), { rootMargin: "100px" }).observe(canvas);
   document.addEventListener("visibilitychange", kick);
 
@@ -570,7 +653,7 @@ export function mountMine(canvas, opts = {}) {
   return {
     setModule(id) {
       module = id;
-      if (opts.still) draw(clock);
+      if (isStill()) draw(clock);
     },
   };
 }
