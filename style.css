@@ -59,9 +59,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.0
 .top nav a { color: var(--on-ink-muted); text-decoration: none; white-space: nowrap; padding: 4px 0; }
 .top nav a:hover { color: var(--on-ink); }
 .top nav a[aria-current="page"] { color: var(--amber); }
-.actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .lang { color: var(--on-ink-muted); font: 500 12px var(--mono); letter-spacing: .06em; text-decoration: none; border: 1px solid var(--edge-2); border-radius: 6px; padding: 5px 8px; }
 .lang:hover { color: var(--on-ink); border-color: #ffffff60; }
+.actions .btn { margin-left: 6px; }
 
 .btn {
   display: inline-block; padding: 9px 16px; border-radius: 10px; font-weight: 600; font-size: 15px;

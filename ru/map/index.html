@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карта рудника — Цифровой рудник на OpenEgiz</title>
+<meta name="description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:title" content="Карта рудника — Цифровой рудник на OpenEgiz">
+<meta property="og:description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:image" content="https://openegiz-contest.github.io/assets/3d/mine-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="en" href="https://openegiz-contest.github.io/map/"><link rel="alternate" hreflang="ru" href="https://openegiz-contest.github.io/ru/map/"><link rel="alternate" hreflang="x-default" href="https://openegiz-contest.github.io/map/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1020'/%3E%3Cg fill='none' stroke='%23f0a33a' stroke-width='2'%3E%3Cellipse cx='16' cy='16' rx='12' ry='8'/%3E%3Cellipse cx='16' cy='17' rx='7' ry='4.5'/%3E%3C/g%3E%3Ccircle cx='16' cy='18' r='2' fill='%23f0a33a'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../../ru/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#131d33"/><g fill="none" stroke="#f0a33a" stroke-width="2"><ellipse cx="16" cy="16" rx="12" ry="8"/><ellipse cx="16" cy="17" rx="7" ry="4.5"/></g><circle cx="16" cy="18" r="2" fill="#f0a33a"/></svg><span>Цифровой рудник на OpenEgiz</span></a>
+    <nav><a href="../../ru/rules/">Положение</a><a href="../../ru/map/" aria-current="page">Карта рудника</a><a href="../../ru/data/">Данные</a><a href="../../ru/environment/">Окружение судьи</a><a href="../../ru/faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Вопросы</a></nav>
+    <div class="actions"><a class="lang" href="../../map/" hreflang="en" lang="en">EN</a><a class="lang" href="../../kk/" hreflang="kk" lang="kk">ҚАЗ</a><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Регистрация</a></div>
+  </div>
+</header>
+<main class="doc">
+<h1 id="карта-рудника">Карта рудника</h1>
+<p>Карта рудника — перечень Модулей, из которых может состоять цифровой рудник. Треки и номинации не предусмотрены: состав Модулей и глубину их проработки Команда определяет самостоятельно. Охват Карты рудника — один из критериев Рубрики (15 баллов); глубина проработки Модулей имеет приоритет над их количеством. Визуализация рудника и дашборды Модулями не считаются: визуализация оценивается отдельным критерием Рубрики.</p>
+<p>Устройство цифрового рудника на платформе демонстрирует <a href="https://github.com/aleka07/openegiz/tree/main/examples/mine">Пример рудника</a>: экскаватор, два самосвала на одной дороге протяжённостью 3,2 км и дробилка. Пример рудника не является основой Решения: Команда создаёт собственный рудник — со своим типом, техникой и технологическими процессами. Оценивается только то, что создано Командой.</p>
+<h2 id="модуль-в-openegiz">Модуль в OpenEgiz</h2>
+<p>Решение должно быть построено на OpenEgiz (Положение, пункт 6.2). Модуль реализуется средствами платформы:</p>
+<ul>
+<li><strong>Двойники</strong> — вещи (things) в Eclipse Ditto. Иерархия рудника задаётся атрибутом <code>_parents</code> и отображается приложением OpenEgiz в Grafana.</li>
+<li><strong>Телеметрия</strong> — сообщения Ditto protocol в MQTT (<code>telemetry/&lt;двойник&gt;</code>). Ditto обновляет состояние двойника, Telegraf сохраняет историю в InfluxDB.</li>
+<li><strong>Дашборды</strong> — Grafana с источниками данных InfluxDB и Ditto.</li>
+<li><strong>Трёхмерная визуализация</strong> — по выбору Команды: Unity WebGL в панели Grafana или иная технология, отображаемая на Стенде.</li>
+<li><strong>Прикладная логика</strong> (диспетчеризация, модели, оптимизация) — собственный сервис в составе <code>compose</code>, обменивающийся данными через MQTT или API Ditto.</li>
+</ul>
+<p>Описание двойников и телеметрии — в <a href="https://github.com/aleka07/openegiz#build-your-own-twins">README OpenEgiz</a>.</p>
+<h2 id="описание-модуля">Описание Модуля</h2>
+<p>Для каждого Модуля указано его назначение в реальном горном производстве. Реализацию Модуля, метрики и данные Команда выбирает самостоятельно. Обоснование каждого Модуля излагается в <code>SUBMISSION.md</code> по схеме «проблема → метрика → результат» с измерением на Стенде (Положение, пункт 6.12). Открытые наборы данных с подходящей лицензией приведены на странице <a href="../data/">«Данные»</a>; допускаются синтетические данные с обоснованными параметрами.</p>
+<hr />
+<h2 id="1-транспорт-и-диспетчеризация">1. Транспорт и диспетчеризация</h2>
+<p><strong>На руднике.</strong> Рабочий цикл самосвала: погрузка у экскаватора, рейс с грузом, разгрузка (дробилка, склад, отвал), порожний рейс. Узкие места — очереди у экскаваторов и в пунктах разгрузки. Диспетчеризация распределяет самосвалы между экскаваторами.</p>
+<h2 id="2-геология-и-качество-руды">2. Геология и качество руды</h2>
+<p><strong>На руднике.</strong> Блочная модель представляет месторождение в виде блоков с содержанием полезного компонента. Рудоконтроль обеспечивает направление руды на фабрику, а пустой породы — в отвал; усреднение (шихтовка) поддерживает качество питания фабрики в заданных пределах.</p>
+<h2 id="3-буровзрывные-работы">3. Буровзрывные работы</h2>
+<p><strong>На руднике.</strong> Скважины бурятся по сетке, заряжаются и взрываются. Качество взрыва — крупность кусков (фрагментация) — определяет скорость погрузки и нагрузку на дробилку. Буровые станки регистрируют параметры бурения (MWD), отражающие крепость породы.</p>
+<h2 id="4-вентиляция-и-безопасность">4. Вентиляция и безопасность</h2>
+<p><strong>На руднике.</strong> На подземных рудниках — проветривание вентиляторами и контроль газов (метан, оксид углерода); на карьерах — пыль и газы после взрыва, устойчивость бортов. Сюда же относятся учёт местонахождения персонала и предотвращение наездов техники.</p>
+<h2 id="5-энергетика">5. Энергетика</h2>
+<p><strong>На руднике.</strong> Электроэнергия потребляется дробилками, мельницами, вентиляторами, электрическими экскаваторами; самосвалы расходуют дизельное топливо. Потери возникают из-за пиков нагрузки и работы оборудования вхолостую.</p>
+<h2 id="6-переработка-дробление-измельчение-флотация">6. Переработка: дробление, измельчение, флотация</h2>
+<p><strong>На руднике.</strong> Руда дробится, измельчается в мельницах, затем флотация выделяет концентрат. Ключевые показатели — извлечение полезного компонента и качество концентрата.</p>
+<h2 id="7-то-и-надёжность-техники">7. ТО и надёжность техники</h2>
+<p><strong>На руднике.</strong> Плановое техническое обслуживание и ремонты по фактическому состоянию сокращают простои техники. Основной показатель — коэффициент технической готовности.</p>
+<hr />
+<h2 id="свои-модули">Свои Модули</h2>
+<p>Карта рудника не является закрытым перечнем. Модуль, не включённый в Карту (например, водоотлив или склад горюче-смазочных материалов), учитывается в охвате наравне с Модулями Карты; его обоснование излагается по той же схеме «проблема → метрика → результат».</p>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Организатор — лаборатория DigitalEgiz. Площадка — КазНУ им. аль-Фараби.</p>
+    <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
+  </div>
+</footer>
+<script>
+// Countdown to the Freeze on the landing page.
+(function () {
+  var el = document.querySelector('.countdown');
+  if (el) {
+    var end = new Date(el.dataset.deadline), u = el.dataset.units.split(',');
+    var tick = function () {
+      var s = Math.floor((end - new Date()) / 1000);
+      if (s <= 0) { el.textContent = el.dataset.done; return; }
+      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+      el.innerHTML = el.dataset.label + ': <b>' + d + ' ' + u[0] + ' ' + h + ' ' + u[1] + ' ' + m + ' ' + u[2] + '</b>';
+    };
+    tick(); setInterval(tick, 30000);
+  }
+})();
+</script>
+</body>
+</html>

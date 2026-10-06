@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Окружение судьи — Цифровой рудник на OpenEgiz</title>
+<meta name="description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:title" content="Окружение судьи — Цифровой рудник на OpenEgiz">
+<meta property="og:description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:image" content="https://openegiz-contest.github.io/assets/3d/mine-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="en" href="https://openegiz-contest.github.io/environment/"><link rel="alternate" hreflang="ru" href="https://openegiz-contest.github.io/ru/environment/"><link rel="alternate" hreflang="x-default" href="https://openegiz-contest.github.io/environment/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1020'/%3E%3Cg fill='none' stroke='%23f0a33a' stroke-width='2'%3E%3Cellipse cx='16' cy='16' rx='12' ry='8'/%3E%3Cellipse cx='16' cy='17' rx='7' ry='4.5'/%3E%3C/g%3E%3Ccircle cx='16' cy='18' r='2' fill='%23f0a33a'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../../ru/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#131d33"/><g fill="none" stroke="#f0a33a" stroke-width="2"><ellipse cx="16" cy="16" rx="12" ry="8"/><ellipse cx="16" cy="17" rx="7" ry="4.5"/></g><circle cx="16" cy="18" r="2" fill="#f0a33a"/></svg><span>Цифровой рудник на OpenEgiz</span></a>
+    <nav><a href="../../ru/rules/">Положение</a><a href="../../ru/map/">Карта рудника</a><a href="../../ru/data/">Данные</a><a href="../../ru/environment/" aria-current="page">Окружение судьи</a><a href="../../ru/faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Вопросы</a></nav>
+    <div class="actions"><a class="lang" href="../../environment/" hreflang="en" lang="en">EN</a><a class="lang" href="../../kk/" hreflang="kk" lang="kk">ҚАЗ</a><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Регистрация</a></div>
+  </div>
+</header>
+<main class="doc">
+<h1 id="окружение-судьи">Окружение судьи</h1>
+<p>Каждое Решение запускается в отдельной виртуальной машине, созданной из единого базового образа и уничтожаемой после оценки. Окружение не содержит данных других Решений, ключей доступа и учётных записей Организатора (Положение, пункт 6.4). Ниже приведены характеристики окружения, позволяющие воспроизвести его и проверить инструкцию <code>README.md</code> до Заморозки.</p>
+<h2 id="характеристики">Характеристики</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Архитектура</td>
+<td>amd64 (x86-64), виртуальная машина KVM</td>
+</tr>
+<tr>
+<td>Процессор</td>
+<td>8 vCPU</td>
+</tr>
+<tr>
+<td>Оперативная память</td>
+<td>16 ГиБ</td>
+</tr>
+<tr>
+<td>Диск</td>
+<td>60 ГБ, из них около 55 ГБ свободно</td>
+</tr>
+<tr>
+<td>Операционная система</td>
+<td>Ubuntu 24.04.5 LTS (официальный cloud image), ядро 6.8</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>Docker Engine 29.1.3, Docker Compose 2.40.3, Buildx 0.30.1 (из репозитория Ubuntu)</td>
+</tr>
+<tr>
+<td>Предустановленное ПО</td>
+<td>только состав cloud image (<code>git</code>, <code>curl</code>, <code>python3</code> и др.) и Docker. Утилита <code>make</code> отсутствует; необходимое ПО устанавливается инструкцией <code>README.md</code> (например, <code>sudo apt install -y make</code>)</td>
+</tr>
+<tr>
+<td>Пользователь</td>
+<td><code>judge</code>, член группы <code>docker</code>, <code>sudo</code> без пароля</td>
+</tr>
+<tr>
+<td>Ограничение времени запуска</td>
+<td>75 минут</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="сеть">Сеть</h2>
+<ul>
+<li>Доступ в интернет предоставляется: инструкция может загружать образы, пакеты, наборы данных и модели.</li>
+<li>Доступ к локальной сети, хост-машине, другим виртуальным машинам и частным диапазонам адресов закрыт. IPv6 отключён.</li>
+<li>Порты, открываемые Решением, доступны изнутри виртуальной машины. Для собственных сервисов используйте адреса <code>localhost</code> или <code>127.0.0.1</code>.</li>
+</ul>
+<h2 id="пользовательский-интерфейс">Пользовательский интерфейс</h2>
+<p>Интерфейс Решения открывается в браузере с той же сетевой политикой, что и у Решения:</p>
+<ul>
+<li>адреса вида <code>http://localhost:ПОРТ</code> открываются так же, как на локальном компьютере;</li>
+<li>внешние ресурсы (скрипты, стили, шрифты, картографические подложки, внешние API) доступны; при их недоступности во время оценки интерфейс может работать некорректно, поэтому критичные файлы рекомендуется размещать в составе Решения;</li>
+<li>WebGL, в том числе сцены Unity, поддерживается; рендеринг выполняется без графического ускорителя, поэтому объём трёхмерных сцен рекомендуется минимизировать.</li>
+</ul>
+<h2 id="проверка-инструкции">Проверка инструкции</h2>
+<p>Для проверки подойдёт любой компьютер или виртуальная машина с Ubuntu 24.04 amd64, 8 CPU, 16 ГБ оперативной памяти и 60 ГБ дискового пространства, с установленными Docker Engine 29.1 и Docker Compose 2.40 и без дополнительного ПО. Пример создания такой виртуальной машины:</p>
+<pre><code class="language-bash">multipass launch 24.04 --cpus 8 --memory 16G --disk 60G --name judge
+multipass shell judge
+sudo apt-get update &amp;&amp; sudo apt-get install -y docker.io docker-compose-v2 docker-buildx
+sudo usermod -aG docker &quot;$USER&quot; &amp;&amp; newgrp docker
+</code></pre>
+<p>Затем склонируйте Репозиторий команды и выполните инструкцию <code>README.md</code> дословно. Всё, что работает только благодаря настройкам вашего компьютера (установленные программы, переменные окружения, загруженные образы, файлы вне репозитория), в Окружении судьи работать не будет.</p>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Организатор — лаборатория DigitalEgiz. Площадка — КазНУ им. аль-Фараби.</p>
+    <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
+  </div>
+</footer>
+<script>
+// Countdown to the Freeze on the landing page.
+(function () {
+  var el = document.querySelector('.countdown');
+  if (el) {
+    var end = new Date(el.dataset.deadline), u = el.dataset.units.split(',');
+    var tick = function () {
+      var s = Math.floor((end - new Date()) / 1000);
+      if (s <= 0) { el.textContent = el.dataset.done; return; }
+      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+      el.innerHTML = el.dataset.label + ': <b>' + d + ' ' + u[0] + ' ' + h + ' ' + u[1] + ' ' + m + ' ' + u[2] + '</b>';
+    };
+    tick(); setInterval(tick, 30000);
+  }
+})();
+</script>
+</body>
+</html>

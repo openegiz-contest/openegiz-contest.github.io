@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Открытые данные — Цифровой рудник на OpenEgiz</title>
+<meta name="description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:title" content="Открытые данные — Цифровой рудник на OpenEgiz">
+<meta property="og:description" content="Открытый конкурс: цифровой двойник рудника на платформе OpenEgiz. Приз 1 000 000 ₸, ИИ-жюри, финал 31 октября в прямом эфире.">
+<meta property="og:image" content="https://openegiz-contest.github.io/assets/3d/mine-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="en" href="https://openegiz-contest.github.io/data/"><link rel="alternate" hreflang="ru" href="https://openegiz-contest.github.io/ru/data/"><link rel="alternate" hreflang="x-default" href="https://openegiz-contest.github.io/data/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1020'/%3E%3Cg fill='none' stroke='%23f0a33a' stroke-width='2'%3E%3Cellipse cx='16' cy='16' rx='12' ry='8'/%3E%3Cellipse cx='16' cy='17' rx='7' ry='4.5'/%3E%3C/g%3E%3Ccircle cx='16' cy='18' r='2' fill='%23f0a33a'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../../ru/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#131d33"/><g fill="none" stroke="#f0a33a" stroke-width="2"><ellipse cx="16" cy="16" rx="12" ry="8"/><ellipse cx="16" cy="17" rx="7" ry="4.5"/></g><circle cx="16" cy="18" r="2" fill="#f0a33a"/></svg><span>Цифровой рудник на OpenEgiz</span></a>
+    <nav><a href="../../ru/rules/">Положение</a><a href="../../ru/map/">Карта рудника</a><a href="../../ru/data/" aria-current="page">Данные</a><a href="../../ru/environment/">Окружение судьи</a><a href="../../ru/faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Вопросы</a></nav>
+    <div class="actions"><a class="lang" href="../../data/" hreflang="en" lang="en">EN</a><a class="lang" href="../../kk/" hreflang="kk" lang="kk">ҚАЗ</a><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Регистрация</a></div>
+  </div>
+</header>
+<main class="doc">
+<h1 id="открытые-данные">Открытые данные</h1>
+<p>Решение может использовать синтетические данные и моделирование с обоснованными параметрами, а также открытые наборы данных (Положение, пункты 6.8–6.11):</p>
+<ul>
+<li>набор данных, размещённый в Репозитории команды, должен иметь лицензию, разрешающую распространение копий;</li>
+<li>за доступность набора данных, загружаемого по инструкции <code>README.md</code>, отвечает Команда;</li>
+<li>использование конфиденциальных данных организаций и персональных данных запрещено;</li>
+<li>раздел «Данные и допущения» в <code>SUBMISSION.md</code> указывает синтетические и реальные данные, источники параметров и лицензии наборов данных.</li>
+</ul>
+<p>Ниже приведены наборы данных, лицензии которых проверены Организатором по состоянию на 5 октября 2026 г. Перечень носит рекомендательный характер и не является юридическим заключением; ответственность за правомерность использования данных несёт Команда (пункт 6.10).</p>
+<h2 id="рекомендованные-наборы-данных">Рекомендованные наборы данных</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Набор данных</th>
+<th>Область</th>
+<th>Лицензия и условия</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.kaggle.com/datasets/edumagalhaes/quality-prediction-in-a-mining-process">Quality Prediction in a Mining Process</a> (Kaggle)</td>
+<td>флотация</td>
+<td>CC0, без условий; 184 МБ — рекомендуется подвыборка</td>
+<td>Телеметрия флотационной фабрики, прогноз содержания SiO₂ в концентрате</td>
+</tr>
+<tr>
+<td><a href="https://data.mendeley.com/datasets/yd7vw4c5mk/1">Methane</a> (Mendeley Data)</td>
+<td>газ, вентиляция, подземный рудник</td>
+<td>CC BY 4.0, указание авторов; 59 МБ</td>
+<td>28 датчиков (CH₄, анемометры, температура, давление) с шагом 1 с</td>
+</tr>
+<tr>
+<td><a href="https://archive.ics.uci.edu/dataset/266/seismic+bumps">seismic-bumps</a> (UCI)</td>
+<td>сейсмичность, подземный рудник</td>
+<td>CC BY 4.0, указание авторов; 138 КБ</td>
+<td>Оценка сейсмической опасности по сменам</td>
+</tr>
+<tr>
+<td><a href="https://zenodo.org/records/7051975">GeoMet dataset</a> (Zenodo)</td>
+<td>геология и рудоподготовка</td>
+<td>CC BY 4.0, указание авторов; 0,4 МБ</td>
+<td>Скважины с координатами, твёрдость руды, извлечение меди</td>
+</tr>
+<tr>
+<td><a href="https://zenodo.org/records/10358374">MWD dataset, 15 Norwegian hard rock tunnels</a> (Zenodo)</td>
+<td>бурение</td>
+<td>CC BY 4.0, указание авторов; 5,5 МБ</td>
+<td>Параметры бурения по 5 205 циклам «бурение — взрыв»</td>
+</tr>
+<tr>
+<td><a href="https://zenodo.org/records/10666378">Fragmentation from 3D drone image analysis, El Aljibe quarry</a> (Zenodo)</td>
+<td>взрывание</td>
+<td>CC BY 4.0, указание авторов; 36 КБ</td>
+<td>Гранулометрический состав после 12 взрывов</td>
+</tr>
+<tr>
+<td><a href="https://zenodo.org/records/20647907">Energy consumption data of a mining and processing plant</a> (Zenodo)</td>
+<td>энергетика</td>
+<td>CC BY-SA 4.0: указание авторов, распространение изменённых данных на тех же условиях; 1,1 МБ</td>
+<td>Профили активной и реактивной мощности горно-обогатительного комбината с шагом 30 минут</td>
+</tr>
+<tr>
+<td><a href="https://zenodo.org/records/21241766">Jaw crushing tests of granite: vibration and current</a> (Zenodo)</td>
+<td>дробление</td>
+<td>CC BY 4.0, указание авторов; 9,8 ГБ — только подвыборка</td>
+<td>Вибрация и токи двигателя щековой дробилки</td>
+</tr>
+<tr>
+<td><a href="https://github.com/370025263/openmines">OpenMines, <code>north_pit_mine.json</code></a> (GitHub)</td>
+<td>карьерный транспорт</td>
+<td>MIT, сохранение текста лицензии; 6 КБ</td>
+<td>Параметры реального карьера: 71 самосвал, экскаваторы, длительность циклов</td>
+</tr>
+<tr>
+<td><a href="https://pubs.usgs.gov/of/2010/1255/">Mineral Facilities of Northern and Central Eurasia</a> (USGS)</td>
+<td>рудники Казахстана</td>
+<td>без ограничений, рекомендуется ссылка на USGS; 153 КБ</td>
+<td>Рудники и обогатительные фабрики Казахстана с указанием мощностей</td>
+</tr>
+</tbody>
+</table></div>
+<p>Открытая телеметрия самосвалов и экскаваторов с подходящей лицензией не выявлена. Для транспортных Модулей рекомендуется использовать синтетические данные, откалиброванные по OpenMines и паспортам техники.</p>
+<h2 id="указание-источника">Указание источника</h2>
+<p>Лицензия CC BY требует указать автора, название и источник набора данных, ссылку на лицензию, а также внесённые изменения (подвыборка, преобразование формата). Эти сведения рекомендуется размещать в файле <code>data/&lt;набор данных&gt;/README.md</code> или в общем файле <code>DATA_LICENSES.md</code> со ссылкой из раздела «Данные и допущения».</p>
+<p>Набор данных сохраняет собственную лицензию: код Решения распространяется по лицензии MIT, файлы данных — на условиях лицензии набора данных.</p>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Организатор — лаборатория DigitalEgiz. Площадка — КазНУ им. аль-Фараби.</p>
+    <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
+  </div>
+</footer>
+<script>
+// Countdown to the Freeze on the landing page.
+(function () {
+  var el = document.querySelector('.countdown');
+  if (el) {
+    var end = new Date(el.dataset.deadline), u = el.dataset.units.split(',');
+    var tick = function () {
+      var s = Math.floor((end - new Date()) / 1000);
+      if (s <= 0) { el.textContent = el.dataset.done; return; }
+      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+      el.innerHTML = el.dataset.label + ': <b>' + d + ' ' + u[0] + ' ' + h + ' ' + u[1] + ' ' + m + ' ' + u[2] + '</b>';
+    };
+    tick(); setInterval(tick, 30000);
+  }
+})();
+</script>
+</body>
+</html>
