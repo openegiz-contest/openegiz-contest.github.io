@@ -23,10 +23,13 @@ const inOut = (u) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2)
 // pixel count and switches the costly passes. A scene starts at tier 2 (1 on phones and
 // weak GPUs) and steps down while its frames run late; below tier 0 it freezes into a
 // still frame that still turns on drag. Tier 3 is the original look, reached by ?gfx=3 only.
+// Antialiasing stays on everywhere: jagged edges read worse than a softer image, and on
+// tile-based GPUs (Apple, phones) MSAA is resolved on chip and nearly free. Never below
+// one pixel per CSS pixel.
 const TIERS = [
-  { dpr: 1, px: 0.6e6, msaa: 0, bloom: false, shadow: 0 },
-  { dpr: 1.25, px: 1.0e6, msaa: 0, bloom: true, shadow: 1024 },
-  { dpr: 1.5, px: 1.6e6, msaa: 2, bloom: true, shadow: 1024 },
+  { dpr: 1.5, px: 1.0e6, msaa: 2, bloom: false, shadow: 0 },
+  { dpr: 2, px: 1.5e6, msaa: 4, bloom: true, shadow: 1024 },
+  { dpr: 2, px: 2.4e6, msaa: 4, bloom: true, shadow: 2048 },
   { dpr: 2, px: 4.5e6, msaa: 4, bloom: true, shadow: 2048 },
 ];
 const FPS = 30; // the scene moves slowly: 30 frames look the same as 120 at a quarter of the work
@@ -129,7 +132,8 @@ export function mountMine(canvas, opts = {}) {
     renderer.dispose();
     return null;
   }
-  const weak = small || /intel|mali|adreno|powervr|videocore/i.test(gpu) || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  // (not hardwareConcurrency: Safari understates it, which sent fast Macs to tier 1)
+  const weak = small || /intel|mali|adreno|powervr|videocore/i.test(gpu) || (navigator.deviceMemory || 8) <= 4;
   let tier = FORCED ?? Math.min(GFX.tier, weak ? 1 : 2);
   let frozen = GFX.frozen;
   const isStill = () => opts.still || frozen;
@@ -419,7 +423,7 @@ export function mountMine(canvas, opts = {}) {
     W = w;
     H = h;
     const q = TIERS[tier];
-    dpr = Math.min(devicePixelRatio || 1, q.dpr, Math.max(0.75, Math.sqrt(q.px / (W * H))));
+    dpr = Math.min(devicePixelRatio || 1, Math.max(1, Math.min(q.dpr, Math.sqrt(q.px / (W * H)))));
     renderer.setPixelRatio(dpr);
     renderer.setSize(W, H, false);
     composer.setPixelRatio(dpr);
@@ -604,8 +608,8 @@ export function mountMine(canvas, opts = {}) {
   // ---- loop: runs only while on screen and the tab is visible, at most FPS frames a second.
   // The time between drawn frames is the honest load signal: GPU work is asynchronous, so
   // timing draw() itself shows only the CPU side, while an overloaded GPU delays the frames.
-  let onScreen = false, raf = 0, lastDraw = 0, winStart = 0, winDraws = 0;
-  const restartWindow = () => ((winStart = performance.now() + WARMUP), (winDraws = 0));
+  let onScreen = false, raf = 0, lastDraw = 0, winStart = 0, winDraws = 0, badWindows = 0;
+  const restartWindow = () => ((winStart = performance.now() + WARMUP), (winDraws = 0), (badWindows = 0));
   const t0 = performance.now() / 1000;
   function frame() {
     raf = 0;
@@ -623,7 +627,11 @@ export function mountMine(canvas, opts = {}) {
     const span = a - winStart;
     if (span < WINDOW) return;
     const fps = (winDraws * 1000) / span;
-    if (fps < 22) stepDown(fps < 12 ? 2 : 1);
+    badWindows = fps < 22 ? badWindows + 1 : 0;
+    // a hopeless window steps down at once and by two; a borderline one needs a second in a row,
+    // so a hiccup (page load, a scroll) does not cost the picture
+    if (fps < 12) stepDown(2);
+    else if (badWindows >= 2) stepDown(1);
     else ((winStart = a), (winDraws = 0));
   }
   function stepDown(steps) {
