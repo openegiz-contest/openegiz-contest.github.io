@@ -70,6 +70,7 @@
         <a data-module="visualization" href="map/#9-визуализация-рудника"><b>09</b>Визуализация рудника</a>
         <a data-module="own" href="map/#свои-модули" class="own"><b>+</b>Свой Модуль</a>
       </div>
+      <p class="modules-hint">Нажмите — Модуль подсветится на руднике. Удерживайте — откроется его описание в Карте рудника.</p>
       <p class="more"><a href="map/">Карта рудника: что делать в каждом Модуле →</a></p>
     </div>
     <div class="map-stage mine-stage" aria-hidden="true">
@@ -86,11 +87,11 @@
     <p class="kicker">Как участвовать</p>
     <h2>Три шага до финала</h2>
     <ol class="steps">
-      <li><span class="step-n">1</span><h3>Регистрация</h3><p>Заполните <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">форму</a>. Через несколько минут каждому придёт приглашение в приватный репозиторий команды с полной копией OpenEgiz. Ссылку «Изменить ответ» сохраните — через неё меняется состав.</p></li>
-      <li><span class="step-n">2</span><h3>Стройте на OpenEgiz</h3><p>Двойники — в Eclipse Ditto, данные идут через платформу, интерфейс читает их из неё. Менять можно всё, включая ядро. ИИ для кода — можно.</p></li>
+      <li><span class="step-n">1</span><h3>Регистрация</h3><p>Заполните <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">форму</a>. Каждый участник получит приглашение в приватный репозиторий команды с полной копией OpenEgiz. Сохраните ссылку «Изменить ответ» — через неё изменяется состав команды.</p></li>
+      <li><span class="step-n">2</span><h3>Стройте на OpenEgiz</h3><p>Двойники — в Eclipse Ditto, данные передаются через платформу, интерфейс получает их из неё. Изменять можно любые части, включая ядро. Допускаются любые инструменты, в том числе ИИ.</p></li>
       <li><span class="step-n">3</span><h3>Сдайте до 25 октября</h3><p>В ветке <code>main</code>: <code>README.md</code>, <code>SUBMISSION.md</code> и <code>presentation.pdf</code>. В 23:59 репозиторий замораживается и становится публичным.</p></li>
     </ol>
-    <div class="callout"><b>Главное правило.</b> Решение поднимается по README без ручного вмешательства в <a href="environment/">Окружении судьи</a> — чистой виртуальной машине Ubuntu с Docker. Проверьте свой README в таком же окружении до Заморозки.</div>
+    <div class="callout"><b>Главное техническое требование.</b> Решение должно запускаться по README без ручного вмешательства в <a href="environment/">Окружении судьи</a> — чистой виртуальной машине Ubuntu с Docker. Проверьте инструкцию в таком же окружении до Заморозки.</div>
   </div>
 </section>
 
@@ -98,23 +99,23 @@
   <div class="wrap">
     <p class="kicker">Как оценивают</p>
     <h2>Судят модели ИИ, а не люди</h2>
-    <p class="sub">Несколько моделей, в том числе от OpenAI и Anthropic, в их официальных агентах. Рубрика, промпты Судей и код пайплайна открыты до Заморозки, все отчёты и оценки публикуются.</p>
+    <p class="sub">Несколько моделей ИИ, в том числе OpenAI и Anthropic. Рубрика, промпты Судей и код пайплайна публикуются до Заморозки, отчёты и оценки по каждому Решению — после Отборочного этапа.</p>
     <div class="flow">
-      <div class="flow-step"><span class="flow-n">Сборщик</span><p>Поднимает каждое Решение строго по README в свежей виртуальной машине и пишет Отчёт сборки</p></div>
+      <div class="flow-step"><span class="flow-n">Сборщик</span><p>Запускает каждое Решение по README в чистой виртуальной машине и составляет Отчёт сборки</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
-      <div class="flow-step"><span class="flow-n">Судьи</span><p>Независимо ставят баллы: читают код и презентацию, сами открывают ваш интерфейс в браузере</p></div>
+      <div class="flow-step"><span class="flow-n">Судьи</span><p>Независимо выставляют баллы по Рубрике: изучают код, презентацию и интерфейс Решения</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
-      <div class="flow-step"><span class="flow-n">Финал</span><p>Топ-10 Судьи обсуждают в прямом эфире и называют места 1, 2 и 3</p></div>
+      <div class="flow-step"><span class="flow-n">Финал</span><p>Десять лучших Решений Судьи обсуждают в прямом эфире и определяют места с первого по третье</p></div>
     </div>
     <div class="rubric">
       <div class="rb"><span>Предметная достоверность</span><i style="--w:100%"></i><b>25</b></div>
-      <div class="rb"><span>Поднимается и работает по README</span><i style="--w:80%"></i><b>20</b></div>
+      <div class="rb"><span>Запуск и работа по README</span><i style="--w:80%"></i><b>20</b></div>
       <div class="rb"><span>Визуализация рудника</span><i style="--w:80%"></i><b>20</b></div>
       <div class="rb"><span>Охват Карты рудника</span><i style="--w:60%"></i><b>15</b></div>
       <div class="rb"><span>Качество кода и архитектуры</span><i style="--w:40%"></i><b>10</b></div>
       <div class="rb"><span>Презентация</span><i style="--w:40%"></i><b>10</b></div>
     </div>
-    <p class="note">Не поднялось по README или построено не на OpenEgiz — не больше 40 баллов из 100 и без шанса на победу. Подробно — в <a href="rules/">Положении</a>.</p>
+    <p class="note">Решение, не запустившееся по README или построенное не на OpenEgiz, получает не более 40 баллов и не может стать Победителем. Подробнее — в <a href="rules/">Положении</a>.</p>
   </div>
 </section>
 
@@ -139,16 +140,16 @@
       <a class="card" href="https://www.youtube.com/live/Wdb1fFZdC4M"><h3>Летняя школа</h3><p>Запись занятий по OpenEgiz: двойники, телеметрия, дашборды.</p></a>
       <a class="card" href="https://github.com/aleka07/openegiz"><h3>Платформа</h3><p>Поднимите OpenEgiz у себя и посмотрите Пример рудника, чтобы понять, как устроен двойник.</p></a>
       <a class="card" href="data/"><h3>Открытые данные</h3><p>Датасеты с проверенными лицензиями: флотация, газ, сейсмика, энергия.</p></a>
-      <a class="card" href="faq/"><h3>Вопросы и ответы</h3><p>Windows, одиночки, ИИ-инструменты, что если README упал.</p></a>
+      <a class="card" href="faq/"><h3>Вопросы и ответы</h3><p>Участие в одиночку, разработка на Windows, ИИ-инструменты, запуск Решения.</p></a>
     </div>
-    <p class="star">Понравился проект? Поставьте <a href="https://github.com/aleka07/openegiz">OpenEgiz звезду на GitHub</a>. Это не условие участия, но нам это правда помогает.</p>
+    <p class="star">Если проект вам понравился, поддержите <a href="https://github.com/aleka07/openegiz">OpenEgiz звездой на GitHub</a>. Это не является условием участия, но для нас это важно.</p>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
     <h2>Регистрация открыта</h2>
-    <p>Вопросы — в <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a>: ответ Организатора там имеет силу Положения. Новости — в <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a>.</p>
+    <p>Вопросы задавайте в <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a>: ответы Организатора имеют силу Положения. Новости — в <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a>.</p>
     <a class="btn btn-lg btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Зарегистрировать команду</a>
   </div>
 </section>
@@ -161,7 +162,7 @@
 </main>
 <footer>
   <div class="wrap">
-    <p>Организатор — частное лицо. Площадка — КазНУ им. аль-Фараби, лаборатория DigitalEgiz.</p>
+    <p>Организатор — лаборатория DigitalEgiz. Площадка — КазНУ им. аль-Фараби.</p>
     <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
   </div>
 </footer>

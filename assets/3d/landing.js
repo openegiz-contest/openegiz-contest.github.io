@@ -42,7 +42,28 @@ if (mapStage && links.length) {
     timer = setTimeout(() => (held || show((current + 1) % links.length), cycle()), 3600);
   };
 
+  // A tap or click only selects the Module on the mine; pressing and holding a tile opens its
+  // section of the Mine Map. Modifier clicks and the keyboard still follow the link.
+  const HOLD_MS = 700;
+  let pressTimer = 0, opened = false;
+  const release = (a) => (clearTimeout(pressTimer), a.classList.remove("is-holding"));
+
   links.forEach((a, i) => {
+    a.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || e.detail === 0) return;
+      e.preventDefault();
+      if (opened) return;
+      held = true;
+      show(i);
+    });
+    a.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      opened = false;
+      a.classList.add("is-holding");
+      pressTimer = setTimeout(() => ((opened = true), (location.href = a.href)), HOLD_MS);
+    });
+    ["pointerup", "pointerleave", "pointercancel"].forEach((t) => a.addEventListener(t, () => release(a)));
+    a.addEventListener("contextmenu", (e) => e.preventDefault());
     a.addEventListener("pointerenter", () => ((held = true), show(i)));
     a.addEventListener("focus", () => ((held = true), show(i)));
     a.addEventListener("pointerleave", () => ((held = false), cycle()));

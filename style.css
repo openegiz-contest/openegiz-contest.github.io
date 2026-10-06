@@ -151,6 +151,11 @@ main.landing .btn-ghost:hover { color: var(--amber-2); }
 .modules a:hover, .modules a.is-on { border-color: #2fe8ce80; background: #2fe8ce12; }
 .modules a.is-on b, .modules a:hover b { color: var(--teal); }
 .modules a.own { border-style: dashed; }
+/* Press and hold a tile to open its Mine Map section: the tile fills while it is held. */
+.modules a { position: relative; overflow: hidden; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.modules a::after { content: ""; position: absolute; inset: 0; background: #2fe8ce2e; transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.modules a.is-holding::after { transform: scaleX(1); transition: transform .7s linear; }
+.modules-hint { margin: 12px 0 0; font: 12.5px var(--mono); color: var(--on-ink-muted); }
 .map-stage { position: sticky; top: 96px; height: min(76vh, 640px); border-radius: 24px; overflow: hidden; border: 1px solid var(--edge); background-color: var(--night); box-shadow: 0 40px 80px -40px #000, inset 0 1px 0 #ffffff0d; }
 .map-now { position: absolute; left: 20px; bottom: 18px; right: 20px; margin: 0; display: flex; align-items: baseline; gap: 12px; font-family: var(--display); font-weight: 600; font-size: 20px; pointer-events: none; }
 .map-now b { font: 500 12px var(--mono); color: var(--teal); border: 1px solid #2fe8ce66; border-radius: 6px; padding: 3px 7px; }

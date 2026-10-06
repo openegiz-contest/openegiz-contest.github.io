@@ -71,6 +71,7 @@
         <a data-module="visualization" href="../map/#9-визуализация-рудника"><b>09</b>Кенішті визуализациялау</a>
         <a data-module="own" href="../map/#свои-модули" class="own"><b>+</b>Өз Модуліңіз</a>
       </div>
+      <p class="modules-hint">Басыңыз — Модуль кеніште белгіленеді. Басып тұрыңыз — оның сипаттамасы Кеніш картасында ашылады.</p>
       <p class="more"><a href="../map/">Кеніш картасы: әр Модульде не істеу керек →</a></p>
     </div>
     <div class="map-stage mine-stage" aria-hidden="true">
@@ -87,11 +88,11 @@
     <p class="kicker">Қалай қатысуға болады</p>
     <h2>Финалға дейін үш қадам</h2>
     <ol class="steps">
-      <li><span class="step-n">1</span><h3>Тіркелу</h3><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Форманы</a> толтырыңыз. Бірнеше минуттан кейін әр қатысушыға OpenEgiz-тің толық көшірмесі бар командалық жеке репозиторийге шақыру келеді. «Жауапты өзгерту» сілтемесін сақтап қойыңыз — құрам сол арқылы өзгертіледі.</p></li>
-      <li><span class="step-n">2</span><h3>OpenEgiz негізінде құрыңыз</h3><p>Егіздер — Eclipse Ditto-да, деректер платформа арқылы өтеді, интерфейс оларды платформадан оқиды. Бәрін, соның ішінде ядроны да өзгертуге болады. Код үшін ЖИ қолдануға болады.</p></li>
+      <li><span class="step-n">1</span><h3>Тіркелу</h3><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Форманы</a> толтырыңыз. Әр қатысушыға OpenEgiz-тің толық көшірмесі бар командалық жеке репозиторийге шақыру келеді. «Жауапты өзгерту» сілтемесін сақтап қойыңыз — команда құрамы сол арқылы өзгертіледі.</p></li>
+      <li><span class="step-n">2</span><h3>OpenEgiz негізінде құрыңыз</h3><p>Егіздер — Eclipse Ditto-да, деректер платформа арқылы беріледі, интерфейс оларды платформадан алады. Кез келген бөлікті, соның ішінде ядроны өзгертуге болады. Кез келген құралдарды, соның ішінде ЖИ-ді қолдануға рұқсат етіледі.</p></li>
       <li><span class="step-n">3</span><h3>25 қазанға дейін тапсырыңыз</h3><p><code>main</code> тармағында: <code>README.md</code>, <code>SUBMISSION.md</code> және <code>presentation.pdf</code>. 23:59-да репозиторий мұздатылып, ашық болады.</p></li>
     </ol>
-    <div class="callout"><b>Басты ереже.</b> Шешім README бойынша қолмен араласусыз <a href="../environment/">Төрешінің ортасында</a> — Docker орнатылған таза Ubuntu виртуалды машинасында іске қосылады. README-ді Мұздатуға дейін дәл осындай ортада тексеріңіз.</div>
+    <div class="callout"><b>Басты техникалық талап.</b> Шешім README бойынша қолмен араласусыз <a href="../environment/">Төрешінің ортасында</a> — Docker орнатылған таза Ubuntu виртуалды машинасында іске қосылуы тиіс. Нұсқаулықты Мұздатуға дейін дәл осындай ортада тексеріңіз.</div>
   </div>
 </section>
 
@@ -99,23 +100,23 @@
   <div class="wrap">
     <p class="kicker">Қалай бағаланады</p>
     <h2>Адамдар емес, ЖИ модельдері бағалайды</h2>
-    <p class="sub">Бірнеше модель, соның ішінде OpenAI мен Anthropic модельдері, өздерінің ресми агенттерінде. Рубрика, Төрешілердің промпттары және пайплайн коды Мұздатуға дейін ашық, барлық есептер мен бағалар жарияланады.</p>
+    <p class="sub">Бірнеше ЖИ моделі, соның ішінде OpenAI мен Anthropic модельдері. Рубрика, Төрешілердің промпттары және пайплайн коды Мұздатуға дейін, әр Шешім бойынша есептер мен бағалар Іріктеу кезеңінен кейін жарияланады.</p>
     <div class="flow">
-      <div class="flow-step"><span class="flow-n">Жинаушы</span><p>Әр Шешімді жаңа виртуалды машинада қатаң README бойынша іске қосып, Жинақ есебін жазады</p></div>
+      <div class="flow-step"><span class="flow-n">Жинаушы</span><p>Әр Шешімді таза виртуалды машинада README бойынша іске қосып, Жинақ есебін жасайды</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
-      <div class="flow-step"><span class="flow-n">Төрешілер</span><p>Дербес балл қояды: код пен презентацияны оқиды, интерфейсіңізді браузерде өздері ашады</p></div>
+      <div class="flow-step"><span class="flow-n">Төрешілер</span><p>Рубрика бойынша дербес балл қояды: Шешімнің кодын, презентациясын және интерфейсін зерттейді</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
-      <div class="flow-step"><span class="flow-n">Финал</span><p>Үздік 10 Шешімді Төрешілер тікелей эфирде талқылап, 1, 2 және 3 орындарды атайды</p></div>
+      <div class="flow-step"><span class="flow-n">Финал</span><p>Үздік он Шешімді Төрешілер тікелей эфирде талқылап, бірінші-үшінші орындарды анықтайды</p></div>
     </div>
     <div class="rubric">
       <div class="rb"><span>Пәндік шынайылық</span><i style="--w:100%"></i><b>25</b></div>
-      <div class="rb"><span>README бойынша іске қосылады және жұмыс істейді</span><i style="--w:80%"></i><b>20</b></div>
+      <div class="rb"><span>README бойынша іске қосылу және жұмыс</span><i style="--w:80%"></i><b>20</b></div>
       <div class="rb"><span>Кенішті визуализациялау</span><i style="--w:80%"></i><b>20</b></div>
       <div class="rb"><span>Кеніш картасын қамту</span><i style="--w:60%"></i><b>15</b></div>
       <div class="rb"><span>Код пен архитектура сапасы</span><i style="--w:40%"></i><b>10</b></div>
       <div class="rb"><span>Презентация</span><i style="--w:40%"></i><b>10</b></div>
     </div>
-    <p class="note">README бойынша іске қосылмаса немесе OpenEgiz негізінде құрылмаса — 100 балдың 40-ынан артық емес және жеңіске мүмкіндік жоқ. Толығырақ — <a href="../rules/">Ережеде</a>.</p>
+    <p class="note">README бойынша іске қосылмаған немесе OpenEgiz негізінде құрылмаған Шешім 40 балдан артық ала алмайды және Жеңімпаз бола алмайды. Толығырақ — <a href="../rules/">Ережеде</a>.</p>
   </div>
 </section>
 
@@ -140,16 +141,16 @@
       <a class="card" href="https://www.youtube.com/live/Wdb1fFZdC4M"><h3>Жазғы мектеп</h3><p>OpenEgiz бойынша сабақтар жазбасы: егіздер, телеметрия, дашбордтар.</p></a>
       <a class="card" href="https://github.com/aleka07/openegiz"><h3>Платформа</h3><p>OpenEgiz-ті өз компьютеріңізде іске қосып, егіз қалай құрылғанын түсіну үшін Кеніш мысалын қараңыз.</p></a>
       <a class="card" href="../data/"><h3>Ашық деректер</h3><p>Лицензиясы тексерілген датасеттер: флотация, газ, сейсмика, энергия.</p></a>
-      <a class="card" href="../faq/"><h3>Сұрақтар мен жауаптар</h3><p>Windows, жеке қатысу, ЖИ құралдары, README құласа не болады.</p></a>
+      <a class="card" href="../faq/"><h3>Сұрақтар мен жауаптар</h3><p>Жеке қатысу, Windows-та әзірлеу, ЖИ құралдары, Шешімді іске қосу.</p></a>
     </div>
-    <p class="star">Жоба ұнады ма? GitHub-та <a href="https://github.com/aleka07/openegiz">OpenEgiz жобасына жұлдызша</a> қойыңыз. Бұл қатысу шарты емес, бірақ бізге шынымен көмектеседі.</p>
+    <p class="star">Жоба ұнаса, GitHub-та <a href="https://github.com/aleka07/openegiz">OpenEgiz жобасына жұлдызша</a> қойып, қолдау көрсетіңіз. Бұл қатысу шарты емес, бірақ біз үшін маңызды.</p>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
     <h2>Тіркеу ашық</h2>
-    <p>Сұрақтар — <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a> бөлімінде: Ұйымдастырушының ондағы жауабы Ереже күшіне ие. Жаңалықтар — <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a>-да.</p>
+    <p>Сұрақтарды <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a> бөлімінде қойыңыз: Ұйымдастырушының жауаптары Ереже күшіне ие. Жаңалықтар — <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a>-да.</p>
     <a class="btn btn-lg btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Команданы тіркеу</a>
   </div>
 </section>
@@ -162,7 +163,7 @@
 </main>
 <footer>
   <div class="wrap">
-    <p>Ұйымдастырушы — жеке тұлға. Алаң — әл-Фараби атындағы ҚазҰУ, DigitalEgiz зертханасы.</p>
+    <p>Ұйымдастырушы — DigitalEgiz зертханасы. Алаң — әл-Фараби атындағы ҚазҰУ.</p>
     <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
   </div>
 </footer>
