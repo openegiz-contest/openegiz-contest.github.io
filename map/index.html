@@ -27,8 +27,8 @@
 </header>
 <main class="doc">
 <h1 id="mine-map">Mine Map</h1>
-<p>The Mine Map is a list of Modules that a digital mine may consist of. There are no tracks or categories: the Team decides which Modules to build and how deeply to develop them. Mine Map Coverage is one of the Rubric criteria (15 points); depth of Module development takes priority over the number of Modules. Mine visualization and dashboards do not count as Modules: visualization is assessed under a separate Rubric criterion.</p>
-<p>The <a href="https://github.com/aleka07/openegiz/tree/main/examples/mine">Example Mine</a> shows how a digital mine is built on the platform: an excavator, two haul trucks on a single 3.2 km road, and a crusher. The Example Mine is not the basis of a Submission: the Team creates its own mine, with its own mine type, equipment and processes. Only what the Team has created is assessed.</p>
+<p>The Mine Map is a list of Modules that a digital mine may consist of. There are no tracks or categories: the Team decides which Modules to build and how deeply to develop them. Mine Map Coverage is one of the Rubric criteria (15 points); depth of Module development takes priority over the number of Modules. Mine visualization and dashboards do not count as Modules: visualization is evaluated under a separate Rubric criterion.</p>
+<p>The <a href="https://github.com/aleka07/openegiz/tree/main/examples/mine">Example Mine</a> shows how a digital mine is structured on the platform: an excavator, two haul trucks on a single 3.2 km road, and a crusher. The Example Mine is not the basis for a Submission: the Team creates its own mine, with its own mine type, equipment and processes. Only what the Team has created is evaluated.</p>
 <h2 id="a-module-in-openegiz">A Module in OpenEgiz</h2>
 <p>A Submission must be built on OpenEgiz (Rules, clause 6.2). A Module is implemented with the platform's tools:</p>
 <ul>
@@ -40,25 +40,25 @@
 </ul>
 <p>Twins and telemetry are described in the <a href="https://github.com/aleka07/openegiz#build-your-own-twins">OpenEgiz README</a>.</p>
 <h2 id="module-descriptions">Module Descriptions</h2>
-<p>Each Module is described by its purpose in real-world mining. The Team chooses the Module's implementation, metrics and data. The justification for each Module is given in <code>SUBMISSION.md</code> following the "problem → metric → result" scheme, with measurement on the Stand (Rules, clause 6.12). Open datasets with suitable licences are listed on the <a href="../data/">"Data"</a> page; synthetic data with justified parameters is allowed.</p>
+<p>Each Module is described by its purpose in real mining operations. The Team chooses the Module's implementation, metrics and data. The justification for each Module is given in <code>SUBMISSION.md</code> following the "problem → metric → result" structure, with measurement on the Stand (Rules, clause 6.12). Open datasets with suitable licenses are listed on the <a href="../data/">"Data"</a> page; synthetic data with justified parameters is allowed.</p>
 <hr />
 <h2 id="1-haulage-and-dispatch">1. Haulage and Dispatch</h2>
-<p><strong>At the mine.</strong> The haul truck cycle: loading at the excavator, loaded haul, dumping (crusher, stockpile, waste dump), empty return. Bottlenecks are queues at the excavators and at the dumping points. Dispatching assigns trucks to excavators.</p>
+<p><strong>At the mine.</strong> The haul truck cycle: loading at the excavator, loaded haul, dumping (crusher, stockpile, waste dump), empty return. Bottlenecks are queues at the excavators and at the dump points. Dispatching assigns trucks to excavators.</p>
 <h2 id="2-geology-and-ore-quality">2. Geology and Ore Quality</h2>
-<p><strong>At the mine.</strong> A block model represents the deposit as blocks with a grade of the valuable component. Grade control ensures that ore goes to the processing plant and waste rock goes to the dump; blending keeps the quality of the plant feed within set limits.</p>
+<p><strong>At the mine.</strong> A block model represents the deposit as blocks, each with a grade of the valuable component. Grade control ensures that ore is sent to the processing plant and waste rock to the waste dump; blending keeps the plant feed quality within set limits.</p>
 <h2 id="3-drilling-and-blasting">3. Drilling and Blasting</h2>
-<p><strong>At the mine.</strong> Holes are drilled in a pattern, charged and blasted. Blast quality, i.e. the size of the broken rock (fragmentation), determines the loading rate and the load on the crusher. Drill rigs record measurement-while-drilling (MWD) data that reflects rock hardness.</p>
+<p><strong>At the mine.</strong> Holes are drilled in a pattern, charged and blasted. Blast quality — the size of the broken rock (fragmentation) — determines the loading rate and the load on the crusher. Drill rigs record measurement-while-drilling (MWD) data that reflects rock strength.</p>
 <h2 id="4-ventilation-and-safety">4. Ventilation and Safety</h2>
-<p><strong>At the mine.</strong> In underground mines: ventilation by fans and monitoring of gases (methane, carbon monoxide); in open pits: dust and gases after blasting, and slope stability. This area also covers personnel location tracking and vehicle collision avoidance.</p>
+<p><strong>At the mine.</strong> In underground mines: fan ventilation and gas monitoring (methane, carbon monoxide); in open pits: dust and gases after blasting, and pit slope stability. This area also covers personnel location tracking and vehicle collision avoidance.</p>
 <h2 id="5-energy">5. Energy</h2>
-<p><strong>At the mine.</strong> Electricity is consumed by crushers, mills, fans and electric excavators; haul trucks burn diesel fuel. Losses come from load peaks and equipment running idle.</p>
+<p><strong>At the mine.</strong> Electricity is consumed by crushers, mills, fans and electric excavators; haul trucks burn diesel fuel. Losses come from peak loads and idling equipment.</p>
 <h2 id="6-processing-crushing-grinding-flotation">6. Processing: Crushing, Grinding, Flotation</h2>
 <p><strong>At the mine.</strong> Ore is crushed, ground in mills, and then flotation separates the concentrate. The key indicators are recovery of the valuable component and concentrate grade.</p>
 <h2 id="7-equipment-maintenance-and-reliability">7. Equipment Maintenance and Reliability</h2>
 <p><strong>At the mine.</strong> Planned maintenance and condition-based repairs reduce equipment downtime. The main indicator is mechanical availability.</p>
 <hr />
 <h2 id="own-modules">Own Modules</h2>
-<p>The Mine Map is not a closed list. A Module not included in the Map (for example, mine dewatering or a fuel and lubricants depot) counts towards coverage on an equal footing with Map Modules; its justification follows the same "problem → metric → result" scheme.</p>
+<p>The Mine Map is not a closed list. A Module not included in the Map (for example, mine dewatering or a fuel and lubricants depot) counts towards coverage on an equal footing with Map Modules; its justification follows the same "problem → metric → result" structure.</p>
 </main>
 <footer>
   <div class="wrap">

@@ -50,7 +50,7 @@
 <li><strong>Final</strong> — the concluding stage of the contest, broadcast live, at which the Judges determine first to third places.</li>
 <li><strong>Finalists</strong> — the Teams whose Submissions have advanced to the Final (clause 10.1).</li>
 <li><strong>Freeze</strong> — the moment at which acceptance of Submissions ends, after which Team Repositories are read-only (clause 7.1).</li>
-<li><strong>Judge</strong> — an AI model operating within an agent that awards points according to the Rubric independently of the other Judges.</li>
+<li><strong>Judge</strong> — an AI model that operates within an agent and awards points according to the Rubric independently of the other Judges.</li>
 <li><strong>Judge Environment</strong> — the reference computing environment in which every Submission is run. Its specifications are published on the contest website.</li>
 <li><strong>Mine Map</strong> — the list of digital mine Modules published on the contest website.</li>
 <li><strong>Module</strong> — a functional area of a digital mine (for example, haulage and dispatch, ventilation).</li>
@@ -76,7 +76,7 @@
 <p>3.3. The prize is paid to each Participant in the amount of their share, in tenge, in cash or by transfer to the Participant's personal bank account.</p>
 <p>3.4. The Runners-up are awarded diplomas and receive an offer of an internship or employment at the DigitalEgiz lab; their Submissions are published on the OpenEgiz website. No cash prize is paid to the Runners-up.</p>
 <p>3.5. The prize is not awarded if no Submission scores more than 40 points (clause 9.3).</p>
-<p>3.6. Taxes, duties, bank fees and other expenses related to receiving the prize are borne by the Participant independently, in accordance with the laws of the country of their tax residence. If the laws of the Republic of Kazakhstan require the Organizer to withhold tax on payment, the prize is paid net of the amount withheld.</p>
+<p>3.6. Taxes, duties, bank fees and other expenses related to receiving the prize are borne by the Participant personally, in accordance with the laws of the country of their tax residence. If the laws of the Republic of Kazakhstan require the Organizer to withhold tax when paying the prize, the prize is paid net of the amount withheld.</p>
 <h2 id="4-participants">4. Participants</h2>
 <p>4.1. Any individual may become a Participant in the contest.</p>
 <p>4.2. A Participant may be a member of only one Team.</p>
@@ -94,7 +94,7 @@
 <p>5.4. Until Registration closes, the membership of a Team is changed using the “Edit response” function of the registration form. If the same GitHub account or email address is listed as a member of two Teams, the person is included in the Team that registered earlier.</p>
 <p>5.5. Registration closes at the moment of the Freeze. After Registration closes, the membership of Teams does not change.</p>
 <h2 id="6-task-and-submission">6. Task and Submission</h2>
-<p>6.1. The contest task is to create the Team's own digital mine on the OpenEgiz platform. There are no tracks or categories. The Team decides on its set of Modules independently, guided by the Mine Map; Modules not included in the Mine Map are evaluated on an equal footing with those included. The depth of development of Modules takes priority over their number.</p>
+<p>6.1. The contest task is to create the Team's own digital mine on the OpenEgiz platform. There are no tracks or categories. The Team determines its set of Modules at its own discretion, guided by the Mine Map; Modules not included in the Mine Map are evaluated on an equal footing with those included. The depth of development of Modules takes priority over their number.</p>
 <p>6.2. The Submission must be built on OpenEgiz. This means that:</p>
 <ul>
 <li>mine objects are represented by twins in Eclipse Ditto;</li>
@@ -115,10 +115,10 @@
 <p>6.7. Submissions are accepted in Kazakh, Russian or English.</p>
 <h3 id="data">Data</h3>
 <p>6.8. Synthetic data and simulation may be used, provided that the parameters are justified.</p>
-<p>6.9. Open datasets may be used. A dataset placed in the Team Repository must have a license that permits the distribution of copies. The Team is responsible for the availability of a dataset downloaded from an external source by the <code>README.md</code> instructions; if the dataset is not downloaded, the Submission is deemed to have failed to start. The license and source of a dataset are stated in <code>README.md</code> or next to the data.</p>
+<p>6.9. Open datasets may be used. A dataset placed in the Team Repository must have a license that permits the distribution of copies. The Team is responsible for the availability of a dataset downloaded from an external source following the <code>README.md</code> instructions; if the dataset is not downloaded, the Submission is deemed to have failed to start. The license and source of a dataset are stated in <code>README.md</code> or next to the data.</p>
 <p>6.10. The use of confidential data of organizations and of personal data is prohibited. The Team is responsible for the lawfulness of its use of data.</p>
 <p>6.11. <code>SUBMISSION.md</code> must contain a “Data and Assumptions” section stating which data are synthetic and which are real, the sources of parameters (equipment data sheets, reference literature, standards, datasets) and the licenses of the datasets.</p>
-<p>6.12. The justification of a Module follows the scheme “problem → metric → result”. The result is measured on the Stand by comparison with the same mine without that Module (for example, throughput in tonnes per shift without dispatch and with it). Only effects reproducible on the Stand are taken into account; claims not confirmed on the Stand are not evaluated.</p>
+<p>6.12. The justification of a Module follows the structure “problem → metric → result”. The result is measured on the Stand by comparison with the same mine without that Module (for example, throughput in tonnes per shift without dispatch and with it). Only effects reproducible on the Stand are taken into account; claims not confirmed on the Stand are not evaluated.</p>
 <h2 id="7-timeline">7. Timeline</h2>
 <div class="table-wrap"><table>
 <thead>
