@@ -27,7 +27,7 @@
 </header>
 <main class="doc">
 <h1 id="mine-map">Mine Map</h1>
-<p>The Mine Map is a list of Modules that a digital mine may consist of. There are no tracks or categories: the Team decides which Modules to build and how deeply to develop them. Mine Map Coverage is one of the Rubric criteria (15 points); depth of Module development takes priority over the number of Modules. Mine visualization and dashboards do not count as Modules: visualization is evaluated under a separate Rubric criterion.</p>
+<p>The Mine Map is a list of Modules that a digital mine may consist of. There are no tracks or categories: the Team decides which Modules to build and how deeply to develop them. Modules are one of the Rubric criteria (10 points); depth of Module development takes priority over the number of Modules. Mine visualization and dashboards do not count as Modules: visualization is evaluated under a separate Rubric criterion.</p>
 <p>The <a href="https://github.com/aleka07/openegiz/tree/main/examples/mine">Example Mine</a> shows how a digital mine is structured on the platform: an excavator, two haul trucks on a single 3.2 km road, and a crusher. The Example Mine is not the basis for a Submission: the Team creates its own mine, with its own mine type, equipment and processes. Only what the Team has created is evaluated.</p>
 <h2 id="a-module-in-openegiz">A Module in OpenEgiz</h2>
 <p>A Submission must be built on OpenEgiz (Rules, clause 6.2). A Module is implemented with the platform's tools:</p>
@@ -40,7 +40,7 @@
 </ul>
 <p>Twins and telemetry are described in the <a href="https://github.com/aleka07/openegiz#build-your-own-twins">OpenEgiz README</a>.</p>
 <h2 id="module-descriptions">Module Descriptions</h2>
-<p>Each Module is described by its purpose in real mining operations. The Team chooses the Module's implementation, metrics and data. The justification for each Module is given in <code>SUBMISSION.md</code> following the "problem → metric → result" structure, with measurement on the Stand (Rules, clause 6.12). Open datasets with suitable licenses are listed on the <a href="../data/">"Data"</a> page; synthetic data with justified parameters is allowed.</p>
+<p>Each Module is described by its purpose in real mining operations. The Team chooses the Module's implementation and data. For each Module, <code>SUBMISSION.md</code> states what it does and how to see it working on the Stand (Rules, clause 6.12). Open datasets with suitable licenses are listed on the <a href="../data/">"Data"</a> page; synthetic data with justified parameters is allowed.</p>
 <hr />
 <h2 id="1-haulage-and-dispatch">1. Haulage and Dispatch</h2>
 <p><strong>At the mine.</strong> The haul truck cycle: loading at the excavator, loaded haul, dumping (crusher, stockpile, waste dump), empty return. Bottlenecks are queues at the excavators and at the dump points. Dispatching assigns trucks to excavators.</p>
@@ -58,7 +58,7 @@
 <p><strong>At the mine.</strong> Planned maintenance and condition-based repairs reduce equipment downtime. The main indicator is mechanical availability.</p>
 <hr />
 <h2 id="custom-modules">Custom Modules</h2>
-<p>The Mine Map is not a closed list. A Module not included in the Map (for example, mine dewatering or a fuel and lubricants depot) counts towards coverage on an equal footing with Map Modules; its justification follows the same "problem → metric → result" structure.</p>
+<p>The Mine Map is not a closed list. A Module not included in the Map (for example, mine dewatering or a fuel and lubricants depot) counts on an equal footing with Map Modules and is described in <code>SUBMISSION.md</code> in the same way.</p>
 </main>
 <footer>
   <div class="wrap">

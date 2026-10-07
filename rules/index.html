@@ -68,6 +68,7 @@
 <li><strong>Team Repository</strong> — a Team's private repository in the <code>openegiz-contest</code> organization on GitHub, created from the Template.</li>
 <li><strong>Template</strong> — a complete copy of the OpenEgiz release fixed for the contest, from which Team Repositories are created.</li>
 <li><strong>Tie-break Rule</strong> — the procedure for awarding a place when there is no majority of the Judges' votes (clause 10.4).</li>
+<li><strong>What-if Scenario</strong> — a change of an operating condition of the mine on the Stand (for example, closing a road or stopping equipment) whose consequences are reflected in the data of the twins.</li>
 <li><strong>Winner</strong> — the Team that has taken first place.</li>
 </ul>
 <h2 id="3-prize">3. Prize</h2>
@@ -118,7 +119,7 @@
 <p>6.9. Open datasets may be used. A dataset placed in the Team Repository must have a license that permits the distribution of copies. The Team is responsible for the availability of a dataset downloaded from an external source following the <code>README.md</code> instructions; if the dataset is not downloaded, the Submission is deemed to have failed to start. The license and source of a dataset are stated in <code>README.md</code> or next to the data.</p>
 <p>6.10. The use of confidential data of organizations and of personal data is prohibited. The Team is responsible for the lawfulness of its use of data.</p>
 <p>6.11. <code>SUBMISSION.md</code> must contain a “Data and Assumptions” section stating which data are synthetic and which are real, the sources of parameters (equipment data sheets, reference literature, standards, datasets) and the licenses of the datasets.</p>
-<p>6.12. The justification of a Module follows the structure “problem → metric → result”. The result is measured on the Stand by comparison with the same mine without that Module (for example, throughput in tonnes per shift without dispatch and with it). Only effects reproducible on the Stand are taken into account; claims not confirmed on the Stand are not evaluated.</p>
+<p>6.12. For each Module and What-if Scenario, <code>SUBMISSION.md</code> states what it does and how to see it working on the Stand; for a What-if Scenario, it also states how to undo it. Only Modules and What-if Scenarios whose operation is confirmed on the Stand are taken into account.</p>
 <h2 id="7-timeline">7. Timeline</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -178,29 +179,34 @@
 </thead>
 <tbody>
 <tr>
-<td>Production Fidelity</td>
-<td>15</td>
-<td>The model on the Stand corresponds to real mining operations: quantities are plausible and consistent with each other, processes are interlinked, and real constraints are taken into account</td>
+<td>Mine Model</td>
+<td>25</td>
+<td>How completely the mine is represented by twins in OpenEgiz: object types, their states and the relations between them</td>
 </tr>
 <tr>
-<td>Module Effect</td>
-<td>40</td>
-<td>The benefit of the Modules is proven on the Stand by comparison with the same mine without the Module (clause 6.12): the comparison is fair and the effect is reproducible. The soundness of the result is evaluated, not the size of the effect</td>
+<td>Behaviour Fidelity</td>
+<td>20</td>
+<td>The state of the twins changes as in real mining operations: quantities are plausible and consistent with each other, processes are interlinked, and real constraints are taken into account</td>
 </tr>
 <tr>
 <td>Mine Visualization</td>
-<td>15</td>
-<td>On the Stand, the mine is presented as a spatial object showing the data of the twins, the course of the operations and the effects of the Modules, and not only as charts and tables. The technology is not restricted</td>
+<td>20</td>
+<td>On the Stand, the mine is presented as a spatial object showing the data of the twins, the course of the operations and the consequences of What-if Scenarios, and not only as charts and tables. The technology is not restricted</td>
 </tr>
 <tr>
-<td>Mine Map Coverage</td>
+<td>What-if Scenarios</td>
 <td>15</td>
-<td>The number of Modules working on the Stand. A Module counts if it changes the operation of the mine or produces a decision that does not exist without it</td>
+<td>What-if Scenarios that can be run on the Stand without changing the code; their consequences propagate through linked twins and are shown in the visualization (clause 6.12)</td>
+</tr>
+<tr>
+<td>Modules</td>
+<td>10</td>
+<td>Modules working on the Stand (clause 6.12). A Module counts if it changes the operation of the mine or produces a decision that does not exist without it</td>
 </tr>
 <tr>
 <td>Presentation</td>
-<td>15</td>
-<td><code>presentation.pdf</code> clearly sets out the work done and the measured result; its content matches the Stand</td>
+<td>10</td>
+<td><code>presentation.pdf</code> clearly sets out the work done and how to see it on the Stand; its content matches the Stand</td>
 </tr>
 </tbody>
 </table></div>
@@ -210,7 +216,7 @@
 <p>10.1. The 10 Submissions with the highest Qualifying Round scores advance to the Final. If there are fewer than ten Submissions, all Submissions advance to the Final.</p>
 <p>10.2. The Final is held live on YouTube. The Judges discuss the Finalists' Submissions and determine first to third places. The discussion logs are published.</p>
 <p>10.3. Places are awarded in order, starting with first place. A place is awarded to the Finalist for whom more than half of the Judges have voted. If there is no majority, a further round of discussion is held. The maximum number of rounds is published together with the AI Jury pipeline.</p>
-<p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Module Effect” criterion and, if they are still equal, to the Team that registered earlier.</p>
+<p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Mine Model” criterion and, if they are still equal, to the Team that registered earlier.</p>
 <p>10.5. If a Judge is unavailable during the Final, the decision is taken by a majority vote of the remaining Judges; if the votes are tied, the Tie-break Rule applies.</p>
 <h2 id="11-disqualification">11. Disqualification</h2>
 <p>11.1. A Submission is disqualified for an attempt to influence the AI Jury, that is, placing hidden or explicit instructions to the Builder and the Judges in the instructions, code, data, presentation or interface (prompt injection).</p>
