@@ -30,7 +30,7 @@
 <h2 id="1-general-provisions">1. General Provisions</h2>
 <p>1.1. These Rules set out the procedure for holding the open contest “Digital Mine on OpenEgiz” (the “contest”). The subject of the contest is the creation of a digital twin of a mine on the OpenEgiz platform.</p>
 <p>1.2. The organizer of the contest is the DigitalEgiz lab (the “Organizer”). The Organizer approves the Rules, publishes Official Clarifications and pays the prize. The venue for the contest is provided by al-Farabi Kazakh National University (KazNU).</p>
-<p>1.3. Places in the contest are determined by the AI Jury in accordance with rules published before the Freeze. The Organizer and any other persons take no part in determining places.</p>
+<p>1.3. Places in the contest are determined by the AI Jury in accordance with the Rubric and the AI Jury pipeline fixed before the Freeze (clause 8.5). The Organizer and any other persons take no part in determining places.</p>
 <p>1.4. The terms of the contest are established by these Rules and by Official Clarifications. The Rules are published in English, Kazakh and Russian; in the event of any discrepancy between the texts, the Russian text shall prevail.</p>
 <p>1.5. Official resources of the contest:</p>
 <ul>
@@ -94,7 +94,7 @@
 <p>5.4. Until Registration closes, the membership of a Team is changed using the “Edit response” function of the registration form. If the same GitHub account or email address is listed as a member of two Teams, the person is included in the Team that registered earlier.</p>
 <p>5.5. Registration closes at the moment of the Freeze. After Registration closes, the membership of Teams does not change.</p>
 <h2 id="6-task-and-submission">6. Task and Submission</h2>
-<p>6.1. The contest task is to create the Team's own digital mine on the OpenEgiz platform. There are no tracks or categories. The Team determines its set of Modules at its own discretion, guided by the Mine Map; Modules not included in the Mine Map are evaluated on an equal footing with those included. The depth of development of Modules takes priority over their number.</p>
+<p>6.1. The contest task is to create the Team's own digital mine on the OpenEgiz platform. The digital mine may represent any part of a mining enterprise, including an open pit, an underground mine or a processing plant. There are no tracks or categories. The Team determines its set of Modules at its own discretion, guided by the Mine Map; Modules not included in the Mine Map are evaluated on an equal footing with those included. The depth of development of Modules takes priority over their number.</p>
 <p>6.2. The Submission must be built on OpenEgiz. This means that:</p>
 <ul>
 <li>mine objects are represented by twins in Eclipse Ditto;</li>
@@ -157,7 +157,7 @@
 <p>7.1. At the moment of the Freeze, the Participants' write access is revoked and the last commit of the <code>main</code> branch of each Team Repository is recorded, after which the repositories are made public and read-only. The recorded commit is deemed to be the Submission. Other branches, pull requests and changes made after the Freeze are not considered. The list of recorded commits is published.</p>
 <p>7.2. A Submission whose <code>main</code> branch does not differ from the Template is deemed not to have been submitted.</p>
 <h2 id="8-ai-jury">8. AI Jury</h2>
-<p>8.1. The composition of the AI Jury is published together with the AI Jury pipeline (clause 8.5).</p>
+<p>8.1. The composition of the AI Jury is published before the Freeze (clause 8.5).</p>
 <p>8.2. A Submission is evaluated in two stages:</p>
 <ol>
 <li>The Builder runs the Submission following the <code>README.md</code> instructions in the isolated Judge Environment and compiles the Build Report.</li>
@@ -165,9 +165,9 @@
 </ol>
 <p>8.3. In the Qualifying Round, each Submission is evaluated by all Judges. Build Reports, the Judges' scores with their reasoning, and work logs are published.</p>
 <p>8.4. If technical limitations of AI services prevent all Judges from evaluating all Submissions in time, some of the Judges evaluate only the Submissions at the top of the ranking compiled from the scores of the other Judges. In that case, the score of a Submission is the average of the scores of the Judges who evaluated it. The date of the Final is not postponed.</p>
-<p>8.5. The Rubric forms part of these Rules. The Judges' prompts, the composition of the AI Jury and the program code of the AI Jury pipeline are published before the Freeze and are not changed after publication, except for corrections of errors that do not affect evaluation. A notice stating the reasons is published for each such correction.</p>
+<p>8.5. The Rubric forms part of these Rules. The AI Jury pipeline (the Judges' prompts and the program code) is fixed before the Freeze. Before the Freeze, the composition of the AI Jury and a checksum (hash) of the fixed version of the pipeline are published; after the Qualifying Round results are published, the Judges' prompts and the program code of the pipeline are published, against which the checksum can be verified. Once fixed, the pipeline is not changed, except for corrections of errors that do not affect evaluation. A notice stating the reasons and the new checksum is published for each such correction.</p>
 <h2 id="9-rubric">9. Rubric</h2>
-<p>9.1. Each Judge scores a Submission on a scale from 0 to 100 points according to the following criteria. Only what has been created by the Team is evaluated; the Example Mine and its parts used without modification earn no points.</p>
+<p>9.1. Each Judge scores a Submission on a scale from 0 to 100 points according to the following criteria. For each criterion the Judge determines a level from 0 to 4; the score for the criterion equals the criterion's maximum points multiplied by the level and divided by 4. Only what has been created by the Team and confirmed by the Judge on the Stand or in the source code is taken into account; statements in <code>SUBMISSION.md</code> and in the presentation that are not confirmed on the Stand earn no points. The Example Mine and its parts used without modification earn no points.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -178,34 +178,29 @@
 </thead>
 <tbody>
 <tr>
-<td>Launch and Operation per README</td>
-<td>20</td>
-<td>The Submission starts by following <code>README.md</code> without manual intervention; the functionality created by the Team and declared in <code>SUBMISSION.md</code> works according to the Build Report</td>
+<td>Production Fidelity</td>
+<td>15</td>
+<td>The model on the Stand corresponds to real mining operations: quantities are plausible and consistent with each other, processes are interlinked, and real constraints are taken into account</td>
 </tr>
 <tr>
-<td>Domain Fidelity</td>
-<td>25</td>
-<td>The model corresponds to real mining operations: parameters and data are justified, and the effects of Modules are measured on the Stand (clauses 6.11–6.12). The mine is the Team's own: the mine type, equipment and processes are chosen by the Team, and the choice of Modules is justified by the needs of that mine</td>
+<td>Module Effect</td>
+<td>40</td>
+<td>The benefit of the Modules is proven on the Stand by comparison with the same mine without the Module (clause 6.12): the comparison is fair and the effect is reproducible. The soundness of the result is evaluated, not the size of the effect</td>
 </tr>
 <tr>
 <td>Mine Visualization</td>
-<td>20</td>
-<td>The mine is presented as a spatial object — a 2D map with moving equipment, an animated diagram or a 3D scene — and not only as charts and tables. The technology is not restricted; the visualization must be displayed on the Stand</td>
+<td>15</td>
+<td>On the Stand, the mine is presented as a spatial object showing the data of the twins, the course of the operations and the effects of the Modules, and not only as charts and tables. The technology is not restricted</td>
 </tr>
 <tr>
 <td>Mine Map Coverage</td>
 <td>15</td>
-<td>The number and depth of development of the implemented Modules. Modules without working functionality are not counted</td>
-</tr>
-<tr>
-<td>Code and Architecture Quality</td>
-<td>10</td>
-<td>Readability and structure of the code; the architecture of the Submission makes use of the platform's capabilities</td>
+<td>The number of Modules working on the Stand. A Module counts if it changes the operation of the mine or produces a decision that does not exist without it</td>
 </tr>
 <tr>
 <td>Presentation</td>
-<td>10</td>
-<td><code>presentation.pdf</code> clearly sets out the goal of the Submission, the work done and the measured effects of the Modules</td>
+<td>15</td>
+<td><code>presentation.pdf</code> clearly sets out the work done and the measured result; its content matches the Stand</td>
 </tr>
 </tbody>
 </table></div>
@@ -215,7 +210,7 @@
 <p>10.1. The 10 Submissions with the highest Qualifying Round scores advance to the Final. If there are fewer than ten Submissions, all Submissions advance to the Final.</p>
 <p>10.2. The Final is held live on YouTube. The Judges discuss the Finalists' Submissions and determine first to third places. The discussion logs are published.</p>
 <p>10.3. Places are awarded in order, starting with first place. A place is awarded to the Finalist for whom more than half of the Judges have voted. If there is no majority, a further round of discussion is held. The maximum number of rounds is published together with the AI Jury pipeline.</p>
-<p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Domain Fidelity” criterion and, if they are still equal, to the Team that registered earlier.</p>
+<p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Module Effect” criterion and, if they are still equal, to the Team that registered earlier.</p>
 <p>10.5. If a Judge is unavailable during the Final, the decision is taken by a majority vote of the remaining Judges; if the votes are tied, the Tie-break Rule applies.</p>
 <h2 id="11-disqualification">11. Disqualification</h2>
 <p>11.1. A Submission is disqualified for an attempt to influence the AI Jury, that is, placing hidden or explicit instructions to the Builder and the Judges in the instructions, code, data, presentation or interface (prompt injection).</p>
@@ -229,7 +224,7 @@
 <p>13.2. A talk by the Winner is a condition for receiving the prize. The talk does not affect the allocation of places and is given in person at al-Farabi Kazakh National University or online, at the Winner's choice.</p>
 <h2 id="14-questions-and-amendments-to-the-rules">14. Questions and Amendments to the Rules</h2>
 <p>14.1. Questions about the contest are asked in the contest GitHub Discussions. The Organizer's answers in GitHub Discussions are Official Clarifications and have the same force as the Rules. Answers given in other channels are not official.</p>
-<p>14.2. After the start of the contest, the Rubric and the Tie-break Rule shall not be changed; the composition of the AI Jury shall not be changed after the publication of the AI Jury pipeline. The contest dates may be changed by an Official Clarification published in advance.</p>
+<p>14.2. After the start of the contest, the Rubric and the Tie-break Rule shall not be changed; the composition of the AI Jury shall not be changed after its publication. The contest dates may be changed by an Official Clarification published in advance.</p>
 <h2 id="15-personal-data">15. Personal Data</h2>
 <p>15.1. Participants' personal data (full name, place of study or work, email address) are used solely for running the contest and paying the prize, and are stored by the Organizer with restricted access.</p>
 <p>15.2. Only the Team name, the Participants' GitHub usernames and, after the Freeze, the contents of the Submission are published.</p>
