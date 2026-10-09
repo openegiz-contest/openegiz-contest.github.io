@@ -29,9 +29,9 @@
 <h1 id="rules-of-the-contest-digital-mine-on-openegiz">Rules of the Contest “Digital Mine on OpenEgiz”</h1>
 <h2 id="1-general-provisions">1. General Provisions</h2>
 <p>1.1. These Rules set out the procedure for holding the open contest “Digital Mine on OpenEgiz” (the “contest”). The subject of the contest is the creation of a digital twin of a mine on the OpenEgiz platform.</p>
-<p>1.2. The organizer of the contest is the DigitalEgiz lab (the “Organizer”). The Organizer approves the Rules, publishes Official Clarifications and pays the prize. The venue for the contest is provided by al-Farabi Kazakh National University (KazNU).</p>
+<p>1.2. The organizer of the contest is the individual Gulshat Amanzholovna Amirkhanova (the “Organizer”). The Organizer holds the contest in her own name, approves the Rules, publishes Official Clarifications and pays the prize from her personal funds. The contest is held with the support of the DigitalEgiz lab of al-Farabi Kazakh National University (KazNU).</p>
 <p>1.3. Places in the contest are determined by the AI Jury in accordance with the Rubric and the AI Jury pipeline fixed before the Freeze (clause 8.5). The Organizer and any other persons take no part in determining places.</p>
-<p>1.4. The terms of the contest are established by these Rules and by Official Clarifications. The Rules are published in English, Kazakh and Russian; in the event of any discrepancy between the texts, the Russian text shall prevail.</p>
+<p>1.4. The terms of the contest are established by these Rules. Official Clarifications interpret the Rules and do not change them. The Rules are published in English, Kazakh and Russian; in the event of any discrepancy between the texts, the Russian text shall prevail.</p>
 <p>1.5. Official resources of the contest:</p>
 <ul>
 <li>contest website — openegiz-contest.github.io;</li>
@@ -54,9 +54,9 @@
 <li><strong>Judge Environment</strong> — the reference computing environment in which every Submission is run. Its specifications are published on the contest website.</li>
 <li><strong>Mine Map</strong> — the list of digital mine Modules published on the contest website.</li>
 <li><strong>Module</strong> — a functional area of a digital mine (for example, haulage and dispatch, ventilation).</li>
-<li><strong>Official Clarification</strong> — an answer by the Organizer in the contest GitHub Discussions that has the same force as the Rules.</li>
+<li><strong>Official Clarification</strong> — an answer by the Organizer in the contest GitHub Discussions that interprets the Rules (clause 14.1).</li>
 <li><strong>OpenEgiz</strong> — an open platform for digital twins (<code>github.com/aleka07/openegiz</code>).</li>
-<li><strong>Organizer</strong> — the DigitalEgiz lab.</li>
+<li><strong>Organizer</strong> — Gulshat Amanzholovna Amirkhanova (clause 1.2).</li>
 <li><strong>Participant</strong> — an individual registered as a member of a Team.</li>
 <li><strong>Qualifying Round</strong> — the evaluation of all Submissions by all Judges that precedes the Final.</li>
 <li><strong>Registration</strong> — the filing of a Team's application through the form on the contest website (section 5).</li>
@@ -77,9 +77,10 @@
 <p>3.3. The prize is paid to each Participant in the amount of their share, in tenge, in cash or by transfer to the Participant's personal bank account.</p>
 <p>3.4. The Runners-up are awarded diplomas and receive an offer of an internship or employment at the DigitalEgiz lab; their Submissions are published on the OpenEgiz website. No cash prize is paid to the Runners-up.</p>
 <p>3.5. The prize is not awarded if no Submission scores more than 40 points (clause 9.3).</p>
-<p>3.6. Taxes, duties, bank fees and other expenses related to receiving the prize are borne by the Participant personally, in accordance with the laws of the country of their tax residence. If the laws of the Republic of Kazakhstan require the Organizer to withhold tax when paying the prize, the prize is paid net of the amount withheld.</p>
+<p>3.6. The prize is paid without tax withholding, unless the laws of the Republic of Kazakhstan require the Organizer to withhold tax when paying it. Taxes, duties, bank fees and other expenses related to receiving the prize are borne by the Participant personally, in accordance with the laws of the country of their tax residence.</p>
+<p>3.7. The time limit and procedure for paying the prize are set out in clause 13.3.</p>
 <h2 id="4-participants">4. Participants</h2>
-<p>4.1. Any individual may become a Participant in the contest.</p>
+<p>4.1. Any individual may become a Participant in the contest. A person under 18 takes part with the consent of their legal representative.</p>
 <p>4.2. A Participant may be a member of only one Team.</p>
 <p>4.3. Any tools, including artificial intelligence tools, may be used to create a Submission.</p>
 <h2 id="5-registration">5. Registration</h2>
@@ -87,9 +88,10 @@
 <p>5.2. At Registration, each Participant confirms:</p>
 <ul>
 <li>agreement with these Rules;</li>
-<li>consent to the distribution of the Submission under the MIT license (clause 6.6);</li>
-<li>agreement with the procedure for dividing the prize (clause 3.2);</li>
-<li>consent to the processing of personal data (section 15).</li>
+<li>that they are 18 or older or have the consent of a legal representative (clause 4.1);</li>
+<li>consent to the distribution of the Submission under the MIT license and the right to distribute their own contribution to the Submission on those terms (clause 6.6);</li>
+<li>agreement with the procedure for dividing and paying the prize (clauses 3.2 and 3.6);</li>
+<li>consent to the processing of personal data, including its transfer outside the Republic of Kazakhstan (section 15).</li>
 </ul>
 <p>5.3. After Registration, a Team Repository <code>openegiz-contest/team-NNN</code>, where NNN is the sequential number of the Registration, is created for the Team, and GitHub invitations are sent to the Participants. Participants receive write access to the Team Repository without the right to change its settings or to delete it.</p>
 <p>5.4. Until Registration closes, the membership of a Team is changed using the “Edit response” function of the registration form. If the same GitHub account or email address is listed as a member of two Teams, the person is included in the Team that registered earlier.</p>
@@ -108,11 +110,11 @@
 <p>6.5. The Submission must contain in the repository root:</p>
 <ul>
 <li><code>README.md</code> — instructions for installing and running the Submission from scratch;</li>
-<li><code>SUBMISSION.md</code> — a description of the Submission in the form provided in the Template: Team members, implemented Modules, their working status and limitations, justification of the Modules, a “Data and Assumptions” section, and a pointer to the visualization;</li>
+<li><code>SUBMISSION.md</code> — a description of the Submission in the form provided in the Template: Team members (GitHub usernames), implemented Modules, their working status and limitations, justification of the Modules, a “Data and Assumptions” section, and a pointer to the visualization;</li>
 <li><code>presentation.pdf</code> — a presentation of the Submission.</li>
 </ul>
 <p>A video may be provided at the Team's discretion as a link in <code>SUBMISSION.md</code>.</p>
-<p>6.6. The Submission is distributed under the <strong>MIT</strong> license. Copyright belongs to the Team; the Team is entitled to name itself in the <code>LICENSE</code> file. The OpenEgiz code included in the Template is distributed under its own licenses.</p>
+<p>6.6. The Submission is distributed under the <strong>MIT</strong> license. Copyright belongs to the Team; the Team is entitled to name itself in the <code>LICENSE</code> file. Each Participant distributes their own contribution to the Submission under the MIT license and confirms at Registration that they have the right to do so. The OpenEgiz code included in the Template, as well as third-party software and data included in the Submission, are distributed under their own licenses. Materials whose license does not permit their publication are not placed in the Team Repository.</p>
 <p>6.7. Submissions are accepted in Kazakh, Russian or English.</p>
 <h3 id="data">Data</h3>
 <p>6.8. Synthetic data and simulation may be used, provided that the parameters are justified.</p>
@@ -138,8 +140,16 @@
 <td>Freeze, Registration closes</td>
 </tr>
 <tr>
-<td>26–30 October 2026</td>
-<td>Qualifying Round, publication of reports, review of Appeals</td>
+<td>26–28 October 2026</td>
+<td>Qualifying Round</td>
+</tr>
+<tr>
+<td>no later than 28 October 2026, 12:00</td>
+<td>publication of the Qualifying Round reports</td>
+</tr>
+<tr>
+<td>48 hours after the reports are published</td>
+<td>filing of Appeals; then review of Appeals and selection of the Finalists</td>
 </tr>
 <tr>
 <td>31 October 2026</td>
@@ -150,8 +160,12 @@
 <td>Winner confirms participation</td>
 </tr>
 <tr>
-<td>after confirmation</td>
-<td>Winner's talk and award of the prize</td>
+<td>no later than 30 November 2026</td>
+<td>Winner's talk</td>
+</tr>
+<tr>
+<td>no later than 30 days after the talk</td>
+<td>payment of the prize (clause 13.3)</td>
 </tr>
 </tbody>
 </table></div>
@@ -165,7 +179,7 @@
 <li>The Judges, independently of each other, award points according to the Rubric on the basis of the Build Report, the source code, <code>SUBMISSION.md</code>, the presentation and the user interface of the Stand.</li>
 </ol>
 <p>8.3. In the Qualifying Round, each Submission is evaluated by all Judges. Build Reports, the Judges' scores with their reasoning, and work logs are published.</p>
-<p>8.4. If technical limitations of AI services prevent all Judges from evaluating all Submissions in time, some of the Judges evaluate only the Submissions at the top of the ranking compiled from the scores of the other Judges. In that case, the score of a Submission is the average of the scores of the Judges who evaluated it. The date of the Final is not postponed.</p>
+<p>8.4. If technical limitations of AI services prevent a Judge from evaluating, before the Qualifying Round reports are published, all the Submissions evaluated by the other Judges, that Judge's scores are not taken into account in the Qualifying Round. The date of the Final is not postponed.</p>
 <p>8.5. The Rubric forms part of these Rules. The AI Jury pipeline (the Judges' prompts and the program code) is fixed before the Freeze. Before the Freeze, the composition of the AI Jury and a checksum (hash) of the fixed version of the pipeline are published; after the Qualifying Round results are published, the Judges' prompts and the program code of the pipeline are published, against which the checksum can be verified. Once fixed, the pipeline is not changed, except for corrections of errors that do not affect evaluation. A notice stating the reasons and the new checksum is published for each such correction.</p>
 <h2 id="9-rubric">9. Rubric</h2>
 <p>9.1. Each Judge scores a Submission on a scale from 0 to 100 points according to the following criteria. For each criterion the Judge determines a level from 0 to 4; the score for the criterion equals the criterion's maximum points multiplied by the level and divided by 4. Only what has been created by the Team and confirmed by the Judge on the Stand or in the source code is taken into account; statements in <code>SUBMISSION.md</code> and in the presentation that are not confirmed on the Stand earn no points. The Example Mine and its parts used without modification earn no points.</p>
@@ -213,27 +227,30 @@
 <p>9.2. The score of a Submission in the Qualifying Round is the arithmetic mean of the Judges' scores.</p>
 <p>9.3. The score of a Submission that has failed to start by following <code>README.md</code> or is not built on OpenEgiz (clause 6.2) may not exceed 40 points. The Team of such a Submission may not become the Winner.</p>
 <h2 id="10-final-and-determination-of-places">10. Final and Determination of Places</h2>
-<p>10.1. The 10 Submissions with the highest Qualifying Round scores advance to the Final. If there are fewer than ten Submissions, all Submissions advance to the Final.</p>
+<p>10.1. The 10 Submissions with the highest Qualifying Round scores, taking into account the outcome of Appeals, advance to the Final. If there are fewer than ten Submissions, all Submissions advance to the Final.</p>
 <p>10.2. The Final is held live on YouTube. The Judges discuss the Finalists' Submissions and determine first to third places. The discussion logs are published.</p>
 <p>10.3. Places are awarded in order, starting with first place. A place is awarded to the Finalist for whom more than half of the Judges have voted. If there is no majority, a further round of discussion is held. The maximum number of rounds is published together with the AI Jury pipeline.</p>
 <p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Mine Model” criterion and, if they are still equal, to the Team that registered earlier.</p>
 <p>10.5. If a Judge is unavailable during the Final, the decision is taken by a majority vote of the remaining Judges; if the votes are tied, the Tie-break Rule applies.</p>
 <h2 id="11-disqualification">11. Disqualification</h2>
-<p>11.1. A Submission is disqualified for an attempt to influence the AI Jury, that is, placing hidden or explicit instructions to the Builder and the Judges in the instructions, code, data, presentation or interface (prompt injection).</p>
+<p>11.1. A Submission is disqualified for an attempt to influence the AI Jury, that is, placing in the instructions, code, data, presentation or interface hidden or explicit instructions addressed to the Builder or the Judges and aimed at changing their work or scores (prompt injection). Instructions addressed to people, and prompts of the Submission's functions addressed to its own AI models, are not an attempt to influence the AI Jury.</p>
 <p>11.2. The presence of such instructions is determined by a separate AI agent. Its finding is published together with the Qualifying Round reports and may be appealed under the procedure set out in section 12.</p>
 <h2 id="12-appeals">12. Appeals</h2>
-<p>12.1. A Team is entitled to file an Appeal within <strong>48 hours</strong> after the publication of the Qualifying Round reports. The procedure for filing is announced at the same time as the reports are published.</p>
+<p>12.1. A Team is entitled to file an Appeal within <strong>48 hours</strong> after the publication of the Qualifying Round reports. The reports are published no later than 28 October 2026, 12:00. The procedure for filing is announced at the same time as the reports are published. The Finalists are determined after all Appeals filed in time have been reviewed.</p>
 <p>12.2. An Appeal is accepted only in respect of a factual error in a Build Report or in a finding on an attempt to influence the AI Jury — for example, if the Build Report states that a Module does not start and the Team presents a log confirming that it starts. Disagreement with the points awarded is not grounds for an Appeal.</p>
 <p>12.3. Appeals are reviewed automatically: the Submission is run again, and the dispute is resolved by a separate Judge. If an Appeal is upheld, the Judges re-evaluate the Submission on the basis of the corrected Build Report; the final score cannot be lowered as a result. The outcome of the review is published and is final.</p>
+<p>12.4. The procedure set out in this section does not limit a Participant's right to protect their rights in the manner established by the laws of the Republic of Kazakhstan.</p>
 <h2 id="13-winner">13. Winner</h2>
 <p>13.1. The Winner confirms participation within <strong>72 hours</strong> after the results are announced, by an email to developerbeck@digitalegiz.kz or a message in the contest GitHub Discussions from any Participant of the Team. If no confirmation is received, the Team next in the final ranking of the Final is recognized as the Winner.</p>
-<p>13.2. A talk by the Winner is a condition for receiving the prize. The talk does not affect the allocation of places and is given in person at al-Farabi Kazakh National University or online, at the Winner's choice.</p>
+<p>13.2. A talk by the Winner is a condition for receiving the prize. The talk does not affect the allocation of places and is given in person at al-Farabi Kazakh National University or online, at the Winner's choice, at a time agreed with the Organizer, no later than 30 November 2026. If the talk has not taken place by then for reasons beyond the Winner's control, the talk condition is deemed fulfilled.</p>
+<p>13.3. The prize is paid no later than 30 days after the Winner's talk or, if the talk condition is deemed fulfilled under clause 13.2, no later than 30 December 2026. For the payment, each Participant of the Winner provides the Organizer with their full name and bank account details or receives their share in cash (clause 3.3). For a Participant who has not provided the details, the time limit for paying their share is extended by the length of the delay.</p>
 <h2 id="14-questions-and-amendments-to-the-rules">14. Questions and Amendments to the Rules</h2>
-<p>14.1. Questions about the contest are asked in the contest GitHub Discussions. The Organizer's answers in GitHub Discussions are Official Clarifications and have the same force as the Rules. Answers given in other channels are not official.</p>
-<p>14.2. After the start of the contest, the Rubric and the Tie-break Rule shall not be changed; the composition of the AI Jury shall not be changed after its publication. The contest dates may be changed by an Official Clarification published in advance.</p>
+<p>14.1. Questions about the contest are asked in the contest GitHub Discussions. The Organizer's answers in GitHub Discussions are Official Clarifications. Answers given in other channels are not official.</p>
+<p>14.2. After the start of the contest, the Rubric and the Tie-break Rule shall not be changed; the composition of the AI Jury shall not be changed after its publication. Other amendments to the Rules are published on the contest website as a new edition with its date and a list of changes and are announced in the contest GitHub Discussions. Amendments do not worsen the position of registered Participants; the contest dates may only be moved to later dates.</p>
 <h2 id="15-personal-data">15. Personal Data</h2>
-<p>15.1. Participants' personal data (full name, place of study or work, email address) are used solely for running the contest and paying the prize, and are stored by the Organizer with restricted access.</p>
-<p>15.2. Only the Team name, the Participants' GitHub usernames and, after the Freeze, the contents of the Submission are published.</p>
+<p>15.1. Participants' personal data (full name, place of study or work, email address, GitHub username and, for paying the prize, bank account details) are processed by the Organizer. The data are used solely for running the contest and paying the prize, are stored with restricted access and are deleted no later than 30 April 2027.</p>
+<p>15.2. To run the contest, personal data are transferred, including outside the Republic of Kazakhstan, to the services through which the contest is held: Google (the registration form and the table of responses), GitHub (Team Repositories and invitations) and the providers of the AI Jury models (GitHub usernames contained in Submissions).</p>
+<p>15.3. Only the Team name, the Participants' GitHub usernames and, after the Freeze, the contents of the Submission, including its commit history, are published. Participants include any other personal data in the Submission, including in the <code>LICENSE</code> file and the commit history, at their own discretion.</p>
 </main>
 <footer>
   <div class="wrap">
