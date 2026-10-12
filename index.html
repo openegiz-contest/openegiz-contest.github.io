@@ -58,7 +58,7 @@
     <div class="map-text">
       <p class="kicker">The task</p>
       <h2>One task for all: your own digital mine</h2>
-      <p class="sub">There are no tracks or categories. You design the mine: open pit or underground, your own equipment, your own processes, your own Modules. Depth matters more than quantity: one Module built well and justified is worth more than five stubs. The Example Mine in the platform is only a sample of how everything is structured; what is evaluated is what you build.</p>
+      <p class="sub">There are no tracks or categories. The Team starts with its Concept, the first section of <code>SUBMISSION.md</code>, written before the code: which enterprise or which part of it, who uses the twin, which decision it helps to make, and why this choice. Given the same task, AI agents build the same mine; different twins come from different people. The Example Mine in the platform is only a sample of how everything is structured; what is evaluated is what you build.</p>
       <div class="modules">
         <a data-module="transport" href="map/#1-haulage-and-dispatch"><b>01</b>Haulage and Dispatch</a>
         <a data-module="geology" href="map/#2-geology-and-ore-quality"><b>02</b>Geology and Ore Quality</a>
@@ -87,7 +87,7 @@
     <h2>Three steps to the Final</h2>
     <ol class="steps">
       <li><span class="step-n">1</span><h3>Registration</h3><p>Fill in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">form</a>. Each participant receives an invitation to a private team repository with a full copy of OpenEgiz. Keep the “Edit response” link: use it to change the team’s membership.</p></li>
-      <li><span class="step-n">2</span><h3>Build on OpenEgiz</h3><p>Twins live in Eclipse Ditto, data flows through the platform, and the interface reads it from the platform. You may change any part, including the core. Any tools are allowed, including AI.</p></li>
+      <li><span class="step-n">2</span><h3>Build on OpenEgiz</h3><p>Write the Concept first, then the code. Twins live in Eclipse Ditto, data flows through the platform, and the interface reads it from the platform. You may change any part, including the core. Any tools are allowed, including AI.</p></li>
       <li><span class="step-n">3</span><h3>Submit by 25 October</h3><p>On the <code>main</code> branch: <code>README.md</code>, <code>SUBMISSION.md</code> and <code>presentation.pdf</code>. At 23:59 the repository is frozen and made public.</p></li>
     </ol>
     <div class="callout"><b>The key technical requirement.</b> The Submission must start by following the README, with no manual intervention, in the <a href="environment/">Judge Environment</a>: a clean Ubuntu virtual machine with Docker. Test your instructions in the same environment before the Freeze.</div>
@@ -102,18 +102,19 @@
     <div class="flow">
       <div class="flow-step"><span class="flow-n">Builder</span><p>Runs each Submission following its README in a clean virtual machine and writes a Build Report</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
-      <div class="flow-step"><span class="flow-n">Judges</span><p>Score independently against the Rubric, examining the code, the presentation and the interface of the Submission</p></div>
+      <div class="flow-step"><span class="flow-n">Judges</span><p>Score independently against the Rubric, examining the Concept, the code, the presentation and the interface of the Submission</p></div>
       <div class="flow-arrow" aria-hidden="true"></div>
       <div class="flow-step"><span class="flow-n">Final</span><p>The Judges discuss the ten best Submissions live and decide first to third places</p></div>
     </div>
     <div class="rubric">
       <div class="rb"><span>Mine Model</span><i style="--w:100%"></i><b>25</b></div>
       <div class="rb"><span>Behaviour Fidelity</span><i style="--w:80%"></i><b>20</b></div>
-      <div class="rb"><span>Mine Visualization</span><i style="--w:80%"></i><b>20</b></div>
-      <div class="rb"><span>What-if Scenarios</span><i style="--w:60%"></i><b>15</b></div>
-      <div class="rb"><span>Modules</span><i style="--w:40%"></i><b>10</b></div>
-      <div class="rb"><span>Presentation</span><i style="--w:40%"></i><b>10</b></div>
+      <div class="rb"><span>Mine Visualization</span><i style="--w:100%"></i><b>25</b></div>
+      <div class="rb"><span>What-if Scenarios</span><i style="--w:40%"></i><b>10</b></div>
+      <div class="rb"><span>Modules</span><i style="--w:20%"></i><b>5</b></div>
+      <div class="rb"><span>Concept and Presentation</span><i style="--w:60%"></i><b>15</b></div>
     </div>
+    <p class="note">The reference point is the Default Solution: what AI agents build from the Template given one sentence, with no Concept and no edits. It will be published on this website as the low bar.</p>
     <p class="note">A Submission that fails to start by following its README or is not built on OpenEgiz receives no more than 40 points and cannot become the Winner. Details are in the <a href="rules/">Rules</a>.</p>
   </div>
 </section>

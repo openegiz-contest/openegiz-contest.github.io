@@ -27,6 +27,15 @@
 </header>
 <main class="doc">
 <h1 id="rules-of-the-contest-digital-mine-on-openegiz">Rules of the Contest “Digital Mine on OpenEgiz”</h1>
+<p>Edition of 12 October 2026. Changes from the previous edition:</p>
+<ul>
+<li>section 2: the terms “Concept” and “Default Solution” are added;</li>
+<li>clause 6.5: <code>SUBMISSION.md</code> starts with the Concept; clause 6.13 on the Concept is added;</li>
+<li>clause 9.1: the “Presentation” criterion (10 points) is replaced by the “Concept and Presentation” criterion (15 points); the weights of criteria are changed: Mine Visualization — 25 points (previously 20), What-if Scenarios — 10 points (previously 15), Modules — 5 points (previously 10);</li>
+<li>clause 9.4 on the Default Solution is added;</li>
+<li>clause 10.2: in the Final, the Judges take into account how well thought out the Concept is;</li>
+<li>clause 14.2: the Rubric in this edition and the Tie-break Rule shall not be changed further.</li>
+</ul>
 <h2 id="1-general-provisions">1. General Provisions</h2>
 <p>1.1. These Rules set out the procedure for holding the open contest “Digital Mine on OpenEgiz” (the “contest”). The subject of the contest is the creation of a digital twin of a mine on the OpenEgiz platform.</p>
 <p>1.2. The organizer of the contest is the individual Gulshat Amanzholovna Amirkhanova (the “Organizer”). The Organizer holds the contest in her own name, approves the Rules, publishes Official Clarifications and pays the prize from her personal funds. The contest is held with the support of the DigitalEgiz lab of al-Farabi Kazakh National University (KazNU).</p>
@@ -46,6 +55,8 @@
 <li><strong>Appeal</strong> — a Team's claim of a factual error in a Build Report or in a finding on an attempt to influence the AI Jury (section 12).</li>
 <li><strong>Build Report</strong> — the report compiled by the Builder on running a Submission: the results of executing the instructions, whether the declared functions work, and logs.</li>
 <li><strong>Builder</strong> — an AI agent that runs a Submission following the README instructions and compiles the Build Report. The Builder does not award points.</li>
+<li><strong>Concept</strong> — the first section of <code>SUBMISSION.md</code>, in which the Team itself states the enterprise or its part, who uses the digital twin and which decision it helps to make (clause 6.13).</li>
+<li><strong>Default Solution</strong> — a digital mine created from the Template by AI agents without a Team's Concept; the Organizer publishes it on the contest website as the reference point for the Judges (clause 9.4).</li>
 <li><strong>Example Mine</strong> — the demonstration digital mine included in OpenEgiz (<code>examples/mine</code>), which shows how a digital mine is structured on the platform. The Example Mine is not a Submission and is not a mandatory basis for one.</li>
 <li><strong>Final</strong> — the concluding stage of the contest, broadcast live, at which the Judges determine first to third places.</li>
 <li><strong>Finalists</strong> — the Teams whose Submissions have advanced to the Final (clause 10.1).</li>
@@ -110,7 +121,7 @@
 <p>6.5. The Submission must contain in the repository root:</p>
 <ul>
 <li><code>README.md</code> — instructions for installing and running the Submission from scratch;</li>
-<li><code>SUBMISSION.md</code> — a description of the Submission in the form provided in the Template: Team members (GitHub usernames), implemented Modules, their working status and limitations, justification of the Modules, a “Data and Assumptions” section, and a pointer to the visualization;</li>
+<li><code>SUBMISSION.md</code> — a description of the Submission in the form provided in the Template: the Concept (clause 6.13), Team members (GitHub usernames), implemented Modules, their working status and limitations, a “Data and Assumptions” section, and a pointer to the visualization;</li>
 <li><code>presentation.pdf</code> — a presentation of the Submission.</li>
 </ul>
 <p>A video may be provided at the Team's discretion as a link in <code>SUBMISSION.md</code>.</p>
@@ -122,6 +133,7 @@
 <p>6.10. The use of confidential data of organizations and of personal data is prohibited. The Team is responsible for the lawfulness of its use of data.</p>
 <p>6.11. <code>SUBMISSION.md</code> must contain a “Data and Assumptions” section stating which data are synthetic and which are real, the sources of parameters (equipment data sheets, reference literature, standards, datasets) and the licenses of the datasets.</p>
 <p>6.12. For each Module and What-if Scenario, <code>SUBMISSION.md</code> states what it does and how to see it working on the Stand; for a What-if Scenario, it also states how to undo it. Only Modules and What-if Scenarios whose operation is confirmed on the Stand are taken into account.</p>
+<p>6.13. The first section of <code>SUBMISSION.md</code> is the Concept, written by the Team itself. The Concept states the enterprise or its part represented by the Submission, who uses the digital twin, which decision it helps to make, and why this choice was made. The object may be real or fictional; for a fictional object, the Concept states which real objects it resembles and where its numerical values come from.</p>
 <h2 id="7-timeline">7. Timeline</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -132,7 +144,7 @@
 </thead>
 <tbody>
 <tr>
-<td>date of publication of the Rules</td>
+<td>date of first publication of the Rules</td>
 <td>start of the contest, Registration opens</td>
 </tr>
 <tr>
@@ -204,31 +216,32 @@
 </tr>
 <tr>
 <td>Mine Visualization</td>
-<td>20</td>
+<td>25</td>
 <td>On the Stand, the mine is presented as a spatial object showing the data of the twins, the course of the operations and the consequences of What-if Scenarios, and not only as charts and tables. The technology is not restricted</td>
 </tr>
 <tr>
 <td>What-if Scenarios</td>
-<td>15</td>
+<td>10</td>
 <td>What-if Scenarios that can be run on the Stand without changing the code; their consequences propagate through linked twins and are shown in the visualization (clause 6.12)</td>
 </tr>
 <tr>
 <td>Modules</td>
-<td>10</td>
+<td>5</td>
 <td>Modules working on the Stand (clause 6.12). A Module counts if it changes the operation of the mine or produces a decision that does not exist without it</td>
 </tr>
 <tr>
-<td>Presentation</td>
-<td>10</td>
-<td><code>presentation.pdf</code> clearly sets out the work done and how to see it on the Stand; its content matches the Stand</td>
+<td>Concept and Presentation</td>
+<td>15</td>
+<td>How well thought out the Concept is (clause 6.13): the task exists in real mining operations, the choice is justified, and the mine model, the visualization and the What-if Scenarios follow from the Concept; a real object with the sources of its numbers stated scores higher. <code>presentation.pdf</code> clearly sets out the work done and how to see it on the Stand; its content matches the Stand</td>
 </tr>
 </tbody>
 </table></div>
 <p>9.2. The score of a Submission in the Qualifying Round is the arithmetic mean of the Judges' scores.</p>
 <p>9.3. The score of a Submission that has failed to start by following <code>README.md</code> or is not built on OpenEgiz (clause 6.2) may not exceed 40 points. The Team of such a Submission may not become the Winner.</p>
+<p>9.4. The Organizer publishes the Default Solution on the contest website. The Judges use the Default Solution as the reference point when determining levels. A Submission that does not go beyond the Default Solution receives low levels for the criteria “Mine Model”, “Mine Visualization” and “Concept and Presentation”.</p>
 <h2 id="10-final-and-determination-of-places">10. Final and Determination of Places</h2>
 <p>10.1. The 10 Submissions with the highest Qualifying Round scores, taking into account the outcome of Appeals, advance to the Final. If there are fewer than ten Submissions, all Submissions advance to the Final.</p>
-<p>10.2. The Final is held live on YouTube. The Judges discuss the Finalists' Submissions and determine first to third places. The discussion logs are published.</p>
+<p>10.2. The Final is held live on YouTube. The Judges discuss the Finalists' Submissions and determine first to third places. In the discussion, the Judges take into account how well thought out the Team's own Concept is, taking the Default Solution as the reference point. The discussion logs are published.</p>
 <p>10.3. Places are awarded in order, starting with first place. A place is awarded to the Finalist for whom more than half of the Judges have voted. If there is no majority, a further round of discussion is held. The maximum number of rounds is published together with the AI Jury pipeline.</p>
 <p>10.4. <strong>Tie-break Rule.</strong> If no majority is reached after the last round, the place is awarded to the Finalist with the highest Qualifying Round score among those that have not yet received a place. If the scores are equal, the place is awarded to the Finalist with the highest average score for the “Mine Model” criterion and, if they are still equal, to the Team that registered earlier.</p>
 <p>10.5. If a Judge is unavailable during the Final, the decision is taken by a majority vote of the remaining Judges; if the votes are tied, the Tie-break Rule applies.</p>
@@ -246,7 +259,7 @@
 <p>13.3. The prize is paid no later than 30 days after the Winner's talk or, if the talk condition is deemed fulfilled under clause 13.2, no later than 30 December 2026. For the payment, each Participant of the Winner provides the Organizer with their full name and bank account details or receives their share in cash (clause 3.3). For a Participant who has not provided the details, the time limit for paying their share is extended by the length of the delay.</p>
 <h2 id="14-questions-and-amendments-to-the-rules">14. Questions and Amendments to the Rules</h2>
 <p>14.1. Questions about the contest are asked in the contest GitHub Discussions. The Organizer's answers in GitHub Discussions are Official Clarifications. Answers given in other channels are not official.</p>
-<p>14.2. After the start of the contest, the Rubric and the Tie-break Rule shall not be changed; the composition of the AI Jury shall not be changed after its publication. Other amendments to the Rules are published on the contest website as a new edition with its date and a list of changes and are announced in the contest GitHub Discussions. Amendments do not worsen the position of registered Participants; the contest dates may only be moved to later dates.</p>
+<p>14.2. The Rubric in the edition of 12 October 2026 and the Tie-break Rule shall not be changed further; the composition of the AI Jury shall not be changed after its publication. Other amendments to the Rules are published on the contest website as a new edition with its date and a list of changes and are announced in the contest GitHub Discussions. Amendments do not worsen the position of registered Participants; the contest dates may only be moved to later dates.</p>
 <h2 id="15-personal-data">15. Personal Data</h2>
 <p>15.1. Participants' personal data (full name, place of study or work, email address, GitHub username and, for paying the prize, bank account details) are processed by the Organizer. The data are used solely for running the contest and paying the prize, are stored with restricted access and are deleted no later than 30 April 2027.</p>
 <p>15.2. To run the contest, personal data are transferred, including outside the Republic of Kazakhstan, to the services through which the contest is held: Google (the registration form and the table of responses), GitHub (Team Repositories and invitations) and the providers of the AI Jury models (GitHub usernames contained in Submissions).</p>
