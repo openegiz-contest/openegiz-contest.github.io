@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>«OpenEgiz цифрлық кеніші» байқауы туралы ереже — OpenEgiz цифрлық кеніші</title>
-<meta name="description" content="Ашық байқау: OpenEgiz платформасында кеніштің цифрлық егізі. Жүлде 1 000 000 ₸, ЖИ қазылар алқасы, финал 31 қазанда тікелей эфирде.">
+<meta name="description" content="OpenEgiz платформасындағы кеніштің цифрлық егізі бойынша ашық байқаудың нәтижелері: Жеңімпаз, 2026 жылғы 31 қазандағы Финалдың жазбасы және 46 ашық Шешім.">
 <meta property="og:title" content="«OpenEgiz цифрлық кеніші» байқауы туралы ереже — OpenEgiz цифрлық кеніші">
-<meta property="og:description" content="Ашық байқау: OpenEgiz платформасында кеніштің цифрлық егізі. Жүлде 1 000 000 ₸, ЖИ қазылар алқасы, финал 31 қазанда тікелей эфирде.">
+<meta property="og:description" content="OpenEgiz платформасындағы кеніштің цифрлық егізі бойынша ашық байқаудың нәтижелері: Жеңімпаз, 2026 жылғы 31 қазандағы Финалдың жазбасы және 46 ашық Шешім.">
 <meta property="og:image" content="https://openegiz-contest.github.io/assets/3d/mine-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a1020">
@@ -21,8 +21,8 @@
 <header class="top">
   <div class="bar">
     <a class="brand" href="../../kk/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#131d33"/><g fill="none" stroke="#f0a33a" stroke-width="2"><ellipse cx="16" cy="16" rx="12" ry="8"/><ellipse cx="16" cy="17" rx="7" ry="4.5"/></g><circle cx="16" cy="18" r="2" fill="#f0a33a"/></svg><span>OpenEgiz цифрлық кеніші</span></a>
-    <nav><a href="../../kk/rules/" aria-current="page">Ереже</a><a href="../../ru/map/">Кеніш картасы</a><a href="../../ru/data/">Деректер</a><a href="../../ru/environment/">Төрешінің ортасы</a><a href="../../ru/faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Сұрақтар</a></nav>
-    <div class="actions"><a class="lang" href="../../rules/" hreflang="en" lang="en">EN</a><a class="lang" href="../../ru/rules/" hreflang="ru" lang="ru">РУС</a><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Тіркелу</a></div>
+    <nav><a href="../../kk/solutions/">Шешімдер</a><a href="https://github.com/openegiz-contest/final-results">Нәтижелер</a><a href="../../kk/rules/" aria-current="page">Ереже</a><a href="../../ru/map/">Кеніш картасы</a><a href="../../ru/data/">Деректер</a><a href="../../ru/environment/">Төрешінің ортасы</a><a href="../../ru/faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Сұрақтар</a></nav>
+    <div class="actions"><a class="lang" href="../../rules/" hreflang="en" lang="en">EN</a><a class="lang" href="../../ru/rules/" hreflang="ru" lang="ru">РУС</a></div>
   </div>
 </header>
 <main class="doc">
@@ -267,24 +267,27 @@
 </main>
 <footer>
   <div class="wrap">
-    <p>Ұйымдастырушы — DigitalEgiz зертханасы. Алаң — әл-Фараби атындағы ҚазҰУ.</p>
+    <p>Байқау әл-Фараби атындағы ҚазҰУ-дың DigitalEgiz зертханасының қолдауымен өткізілді.</p>
     <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
   </div>
 </footer>
 <script>
-// Countdown to the Freeze on the landing page.
+// The recording on the landing page: a link to YouTube that plays in place when clicked,
+// so YouTube's player loads only for those who start it.
 (function () {
-  var el = document.querySelector('.countdown');
-  if (el) {
-    var end = new Date(el.dataset.deadline), u = el.dataset.units.split(',');
-    var tick = function () {
-      var s = Math.floor((end - new Date()) / 1000);
-      if (s <= 0) { el.textContent = el.dataset.done; return; }
-      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
-      el.innerHTML = el.dataset.label + ': <b>' + d + ' ' + u[0] + ' ' + h + ' ' + u[1] + ' ' + m + ' ' + u[2] + '</b>';
-    };
-    tick(); setInterval(tick, 30000);
-  }
+  var video = document.querySelector('.video[data-video]');
+  if (!video) return;
+  video.addEventListener('click', function (e) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + video.dataset.video + '?autoplay=1&rel=0';
+    frame.title = video.dataset.title;
+    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    frame.className = 'video';
+    video.replaceWith(frame);
+  });
 })();
 </script>
 </body>

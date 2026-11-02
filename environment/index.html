@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Judge Environment — Digital Mine on OpenEgiz</title>
-<meta name="description" content="Open contest: a digital twin of a mine on the OpenEgiz platform. Prize 1,000,000 ₸, AI jury, live Final on 31 October.">
+<meta name="description" content="Results of the open contest for a digital twin of a mine on OpenEgiz: the Winner, the recording of the Final of 31 October 2026 and 46 open Submissions.">
 <meta property="og:title" content="Judge Environment — Digital Mine on OpenEgiz">
-<meta property="og:description" content="Open contest: a digital twin of a mine on the OpenEgiz platform. Prize 1,000,000 ₸, AI jury, live Final on 31 October.">
+<meta property="og:description" content="Results of the open contest for a digital twin of a mine on OpenEgiz: the Winner, the recording of the Final of 31 October 2026 and 46 open Submissions.">
 <meta property="og:image" content="https://openegiz-contest.github.io/assets/3d/mine-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a1020">
@@ -21,8 +21,8 @@
 <header class="top">
   <div class="bar">
     <a class="brand" href="../"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#131d33"/><g fill="none" stroke="#f0a33a" stroke-width="2"><ellipse cx="16" cy="16" rx="12" ry="8"/><ellipse cx="16" cy="17" rx="7" ry="4.5"/></g><circle cx="16" cy="18" r="2" fill="#f0a33a"/></svg><span>Digital Mine on OpenEgiz</span></a>
-    <nav><a href="../rules/">Rules</a><a href="../map/">Mine Map</a><a href="../data/">Data</a><a href="../environment/" aria-current="page">Judge Environment</a><a href="../faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Questions</a></nav>
-    <div class="actions"><a class="lang" href="../ru/environment/" hreflang="ru" lang="ru">РУС</a><a class="lang" href="../kk/" hreflang="kk" lang="kk">ҚАЗ</a><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_GqIWZQm8EkmOtHEtu-RZp5QbqvAe-jF7s3RoIkixh3Gxwg/viewform">Register</a></div>
+    <nav><a href="../solutions/">Submissions</a><a href="https://github.com/openegiz-contest/final-results">Results</a><a href="../rules/">Rules</a><a href="../map/">Mine Map</a><a href="../data/">Data</a><a href="../environment/" aria-current="page">Judge Environment</a><a href="../faq/">FAQ</a><a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">Questions</a></nav>
+    <div class="actions"><a class="lang" href="../ru/environment/" hreflang="ru" lang="ru">РУС</a><a class="lang" href="../kk/" hreflang="kk" lang="kk">ҚАЗ</a></div>
   </div>
 </header>
 <main class="doc">
@@ -99,24 +99,27 @@ sudo usermod -aG docker &quot;$USER&quot; &amp;&amp; newgrp docker
 </main>
 <footer>
   <div class="wrap">
-    <p>Organizer: the DigitalEgiz lab. Venue: al-Farabi Kazakh National University.</p>
+    <p>The contest was held with the support of the DigitalEgiz lab of al-Farabi Kazakh National University.</p>
     <p><a href="https://github.com/aleka07/openegiz">OpenEgiz</a> · <a href="https://www.instagram.com/digital_twin_kaznu/">Instagram</a> · <a href="https://github.com/openegiz-contest/openegiz-contest.github.io/discussions">GitHub Discussions</a></p>
   </div>
 </footer>
 <script>
-// Countdown to the Freeze on the landing page.
+// The recording on the landing page: a link to YouTube that plays in place when clicked,
+// so YouTube's player loads only for those who start it.
 (function () {
-  var el = document.querySelector('.countdown');
-  if (el) {
-    var end = new Date(el.dataset.deadline), u = el.dataset.units.split(',');
-    var tick = function () {
-      var s = Math.floor((end - new Date()) / 1000);
-      if (s <= 0) { el.textContent = el.dataset.done; return; }
-      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
-      el.innerHTML = el.dataset.label + ': <b>' + d + ' ' + u[0] + ' ' + h + ' ' + u[1] + ' ' + m + ' ' + u[2] + '</b>';
-    };
-    tick(); setInterval(tick, 30000);
-  }
+  var video = document.querySelector('.video[data-video]');
+  if (!video) return;
+  video.addEventListener('click', function (e) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + video.dataset.video + '?autoplay=1&rel=0';
+    frame.title = video.dataset.title;
+    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    frame.className = 'video';
+    video.replaceWith(frame);
+  });
 })();
 </script>
 </body>
